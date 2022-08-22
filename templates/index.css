@@ -1,0 +1,13 @@
+section {
+    /* Nos sections sont des carrés de taille 300x300 pixels */
+    width: 300px;
+    height: 300px;
+    }
+    header {
+    /* La largeur du header est de 50% de la largeur de la page */
+    width: 80%;
+    /* La hauteur est de 300px */
+    height: 300px;
+    min-width: 50%;
+max-width: 90%;
+    }
