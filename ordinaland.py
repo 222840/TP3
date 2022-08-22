@@ -68,7 +68,7 @@ class Composante():
         self.lien = lien
         self.prix = prix
 
-
+print()
 # ---------------------------------------------------
 # ---------- Données à utiliser sur le site ---------
 # ---------------------------------------------------
