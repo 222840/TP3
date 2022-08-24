@@ -18,12 +18,26 @@
         <a href="/construire/">Construire un ordinateu</a>
         <a class="active" href="/blog/">Blog</a>
         <a href= "/glossaire/">Glossaire </a>
-        <<a href="/contact/"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+        <a href="/contact/"><i class="fa fa-fw fa-envelope"></i> Contact</a>
     </div>
+
     <header>
         <h1>OdrinaLand</h1>
         <p>La référence en matière d'ordinateurs</p>
     </header>
+
+    <section>
+        {%for i in article_de_la_page :%}
+        <p>{{i}}</p>
+        {% endfor %}
+    </section>
+
+
+    <section>
+
+    </section>
+
+
    <footer>{{annee}}-Ordinaland</footer>
 </body>
 </html>

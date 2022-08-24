@@ -48,6 +48,16 @@ class Article:
 
         return 0
 
+    @staticmethod
+    def pagination():
+        if len(articles) % 3 == 0:
+            nb_pages = len(articles) / 3
+        else:
+            nb_pages = len(articles) // 3 + 1
+            modulo = len(articles) % 3
+        return [nb_pages, modulo]
+
+
 
 class Ordinateur:
     def __init__(self):
