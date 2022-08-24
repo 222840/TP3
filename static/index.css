@@ -46,7 +46,9 @@ body {
       background-color: chocolate;
       color: white;
     }
-
+h1{
+    text-align: center
+}
 h2 {
     text-align: center;
 
@@ -64,9 +66,19 @@ pre {
    border: 5px solid black;
    top-margin:0px;
    margin:30%;
-   margin-bottom: 0px;
-   margin-top: 0px;
+   margin-bottom: 40px;
+   margin-top: 40px;
    padding-top: 10px;
    padding-bottom:
+
 }
 
+p {
+text-align: center;
+
+}
+
+footer{
+    background-color:pink;
+    text-align: center;
+}

@@ -11,7 +11,14 @@ class Definition:
         # TODO : passer à travers tous les termes définis dans le
         # tableau `glossaire` et retourner un tableau de termes qui
         # sont présents dans le texte
-        print('TODO : trouver les mots reliés dans le Glossaire:')
+
+        tab_termes = []
+        for definition in glossaire:
+            if definition.terme in self.texte:
+                tab_termes.append(definition.terme)
+
+        print('Les mots reliés dans le Glossaire:' + tab_termes)
+
         print(glossaire)
 
         return []
@@ -33,8 +40,11 @@ class Article:
         return self.texte.split('\n\n')
 
     def temps_lecture(self):
+        RYTHME_LECTURE = 200 / 60
+        nb_mots = len(self.texte.split())
+        temps_lecture = nb_mots / RYTHME_LECTURE
         # TODO
-        print("TODO: Estimer le temps requis pour lire l'article (en secondes, à un rythme de 200 mots par minute)")
+        print("Le temps estimé requis pour lire l'article (en secondes) est:" + temps_lecture)
 
         return 0
 
@@ -45,19 +55,24 @@ class Ordinateur:
 
     def sous_total(self):
         # TODO
-        print("TODO: calculer le sous-total en additionnant le prix de toutes les composantes")
+        self.sous_total = 0
+        for composante in self:
+            self.sous_total += composante.prix
+        print("le prix sous-total est:" + self.sous_total)
 
         return 0
 
     def taxes(self):
         # TODO
-        print("TODO: calculer 15% du sous-total")
+        self.taxes = self.sous_total * 0.15
+        print("Le prix des taxes:" + self.taxes)
 
         return 0
 
     def total(self):
         # TODO
-        print("TODO: calculer le sous-total + les taxes")
+        self.total = self.sous_total + self.taxes
+        print("Le prix total est:" + self.total)
 
         return 0
 
@@ -68,7 +83,7 @@ class Composante():
         self.lien = lien
         self.prix = prix
 
-print()
+
 # ---------------------------------------------------
 # ---------- Données à utiliser sur le site ---------
 # ---------------------------------------------------
@@ -80,10 +95,12 @@ print()
 
 glossaire = [
     Definition('case',
-        """A computer case, also known as a computer chassis, is the enclosure that contains most of the components of a personal computer (usually excluding the display, keyboard, and mouse). Cases are usually constructed from steel (often SECC—steel, electrogalvanized, cold-rolled, coil), aluminium and plastic. Other materials such as glass, wood, acrylic and even Lego bricks have appeared in home-built cases.""", 'https://en.wikipedia.org/wiki/Computer_case'),
+               """A computer case, also known as a computer chassis, is the enclosure that contains most of the components of a personal computer (usually excluding the display, keyboard, and mouse). Cases are usually constructed from steel (often SECC—steel, electrogalvanized, cold-rolled, coil), aluminium and plastic. Other materials such as glass, wood, acrylic and even Lego bricks have appeared in home-built cases.""",
+               'https://en.wikipedia.org/wiki/Computer_case'),
     Definition('motherboard', """A motherboard (also called mainboard, main circuit board, mb, mboard, backplane board, base board, system board, logic board (only in Apple computers) or mobo) is the main printed circuit board (PCB) in general-purpose computers and other expandable systems. It holds and allows communication between many of the crucial electronic components of a system, such as the central processing unit (CPU) and memory, and provides connectors for other peripherals. Unlike a backplane, a motherboard usually contains significant sub-systems, such as the central processor, the chipset's input/output and memory controllers, interface connectors, and other components integrated for general use.
 
-Motherboard means specifically a PCB with expansion capabilities. As the name suggests, this board is often referred to as the "mother" of all components attached to it, which often include peripherals, interface cards, and daughterboards: sound cards, video cards, network cards, host bus adapters, TV tuner cards, IEEE 1394 cards; and a variety of other custom components.""", 'https://en.wikipedia.org/wiki/Motherboard'),
+Motherboard means specifically a PCB with expansion capabilities. As the name suggests, this board is often referred to as the "mother" of all components attached to it, which often include peripherals, interface cards, and daughterboards: sound cards, video cards, network cards, host bus adapters, TV tuner cards, IEEE 1394 cards; and a variety of other custom components.""",
+               'https://en.wikipedia.org/wiki/Motherboard'),
     Definition('cpu', """A central processing unit (CPU), also called a central processor, main processor or just processor, is the electronic circuitry that executes instructions comprising a computer program. The CPU performs basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions in the program. This contrasts with external components such as main memory and I/O circuitry, and specialized processors such as graphics processing units (GPUs).
 
 The form, design, and implementation of CPUs have changed over time, but their fundamental operation remains almost unchanged. Principal components of a CPU include the arithmetic–logic unit (ALU) that performs arithmetic and logic operations, processor registers that supply operands to the ALU and store the results of ALU operations, and a control unit that orchestrates the fetching (from memory), decoding and execution (of instructions) by directing the coordinated operations of the ALU, registers and other components.
@@ -91,14 +108,16 @@ The form, design, and implementation of CPUs have changed over time, but their f
 Most modern CPUs are implemented on integrated circuit (IC) microprocessors, with one or more CPUs on a single IC chip. Microprocessor chips with multiple CPUs are multi-core processors. The individual physical CPUs, processor cores, can also be multithreaded to create additional virtual or logical CPUs.
 
 An IC that contains a CPU may also contain memory, peripheral interfaces, and other components of a computer; such integrated devices are variously called microcontrollers or systems on a chip (SoC).""",
-'https://en.wikipedia.org/wiki/Central_processing_unit'),
+               'https://en.wikipedia.org/wiki/Central_processing_unit'),
     Definition('storage', """Long-term storage like operating system, software programs, and
 personal files. Size determined by megabytes (MB), gigabytes (GB), and
 terabytes (TB).""", 'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
     Definition('cooling', """Fans / CPU Cooler dissipates the hot air from the computer. CPU fan
-or water cooling? This is down to personal preference.""", 'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
+or water cooling? This is down to personal preference.""",
+               'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
     Definition('ram', """Random Access Memory. Temporary, short-term storage of information for rapid retrieval
-without it a computer can’t perform simple tasks.""", 'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
+without it a computer can’t perform simple tasks.""",
+               'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
     Definition('power', """PSU (Power Supply Unit) converts power from the wall socket which
 is alternating current AC to low-voltage regulated DC power that your
 motherboard and processor needs. Decide on the other components first
@@ -110,18 +129,23 @@ need.""", 'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
 
 Keyboard keys (buttons) typically have a set of characters engraved or printed on them, and each press of a key typically corresponds to a single written symbol. However, producing some symbols may require pressing and holding several keys simultaneously or in sequence. While most keys produce characters (letters, numbers or symbols), other keys (such as the escape key) can prompt the computer to execute system commands. In a modern computer, the interpretation of key presses is generally left to the software: the information sent to the computer, the scan code, tells it only which physical key (or keys) was pressed or released.
 
-In normal usage, the keyboard is used as a text entry interface for typing text, numbers, and symbols into application software such as a word processor, web browser or social media app.""", "https://en.wikipedia.org/wiki/Computer_keyboard"),
+In normal usage, the keyboard is used as a text entry interface for typing text, numbers, and symbols into application software such as a word processor, web browser or social media app.""",
+               "https://en.wikipedia.org/wiki/Computer_keyboard"),
     Definition('mouse', """A computer mouse is a hand-held pointing device that detects
 two-dimensional motion relative to a surface. This motion is typically
 translated into the motion of a pointer on a display, which allows a
 smooth control of the graphical user interface of a computer. """, "https://en.wikipedia.org/wiki/Computer_mouse"),
-    Definition('network', """Ethernet card. Transmit data from the network to your computer. Some of these cards can include WIFI""",'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
-    Definition('sound', """Sound Cards. Allow the use of audio components.""",'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
-    Definition('gpu', """Graphical process unit. Helps processing images before rendering them on the monitor.""",'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
-    Definition('monitor', """A computer monitor is an output device that displays information in pictorial or text form. A monitor usually comprises a visual display, some circuitry, a casing, and a power supply. The display device in modern monitors is typically a thin-film-transistor liquid-crystal display (TFT-LCD) with LED backlighting having replaced cold-cathode fluorescent lamp (CCFL) backlighting. Previous monitors used a cathode-ray tube (CRT) and some plasma (also called gas-plasma) displays. Monitors are connected to the computer via VGA, Digital Visual Interface (DVI), HDMI, DisplayPort, USB-C, low-voltage differential signaling (LVDS) or other proprietary connectors and signals. """, "https://en.wikipedia.org/wiki/Computer_monitor"),
+    Definition('network',
+               """Ethernet card. Transmit data from the network to your computer. Some of these cards can include WIFI""",
+               'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
+    Definition('sound', """Sound Cards. Allow the use of audio components.""",
+               'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
+    Definition('gpu', """Graphical process unit. Helps processing images before rendering them on the monitor.""",
+               'https://checkify.com/daily-checklists/build-your-own-pc-checklist/'),
+    Definition('monitor',
+               """A computer monitor is an output device that displays information in pictorial or text form. A monitor usually comprises a visual display, some circuitry, a casing, and a power supply. The display device in modern monitors is typically a thin-film-transistor liquid-crystal display (TFT-LCD) with LED backlighting having replaced cold-cathode fluorescent lamp (CCFL) backlighting. Previous monitors used a cathode-ray tube (CRT) and some plasma (also called gas-plasma) displays. Monitors are connected to the computer via VGA, Digital Visual Interface (DVI), HDMI, DisplayPort, USB-C, low-voltage differential signaling (LVDS) or other proprietary connectors and signals. """,
+               "https://en.wikipedia.org/wiki/Computer_monitor"),
 ]
-
-
 
 articles = [
     Article("Bienvenue!", "15 août 2022", """Le site OrdinaLand ouvre officiellement ses portes!
@@ -131,11 +155,9 @@ surtout, profitez de notre super outil gratuit d'aide à la
 construction d'un ordinateur!
 """, "penguin.png"),
 
-
     Article("Promotion d'ouverture!", "15 août 2022", """Nouvelle promotion sur le site!
 Entrez le code BIENVENUE pour profiter d'un rabais de 15%!
 """, "discount.png"),
-
 
     Article("Tout savoir sur les souris", "16 août 2022", """Non nihil quasi odit aut aut voluptatibus id. Mollitia consequatur eos excepturi provident doloremque fugit. Dolorem nisi est cum possimus. Aut quasi rerum necessitatibus. Corrupti aut quidem facilis omnis labore atque. Temporibus rerum doloremque sed et expedita.
 
@@ -179,7 +201,8 @@ Dolor quasi sit atque explicabo impedit. Fuga dolores ex soluta. Corrupti aut ip
 
 Ea aut voluptate a ipsum molestiae pariatur. Non ex veniam ea. Culpa est odio vel beatae ut.
 
-Autem dignissimos esse mollitia eius voluptatem sit cum. Vero alias temporibus blanditiis optio maiores voluptatem natus provident. Repudiandae sint amet officia nesciunt. Reiciendis eligendi sed veniam repudiandae odit accusantium. Aut nobis quia quia dolorem animi perferendis.""", "question.png"),
+Autem dignissimos esse mollitia eius voluptatem sit cum. Vero alias temporibus blanditiis optio maiores voluptatem natus provident. Repudiandae sint amet officia nesciunt. Reiciendis eligendi sed veniam repudiandae odit accusantium. Aut nobis quia quia dolorem animi perferendis.""",
+            "question.png"),
 
     Article("Promotion", "18 août 2022", """Nouvelle promotion sur le site!
 Entrez le code PROMO55 pour profiter d'un rabais de 55%!
@@ -258,8 +281,8 @@ Dolor quasi sit atque explicabo impedit. Fuga dolores ex soluta. Corrupti aut ip
 
 Ea aut voluptate a ipsum molestiae pariatur. Non ex veniam ea. Culpa est odio vel beatae ut.
 
-Autem dignissimos esse mollitia eius voluptatem sit cum. Vero alias temporibus blanditiis optio maiores voluptatem natus provident. Repudiandae sint amet officia nesciunt. Reiciendis eligendi sed veniam repudiandae odit accusantium. Aut nobis quia quia dolorem animi perferendis.""", "question.png"),
-
+Autem dignissimos esse mollitia eius voluptatem sit cum. Vero alias temporibus blanditiis optio maiores voluptatem natus provident. Repudiandae sint amet officia nesciunt. Reiciendis eligendi sed veniam repudiandae odit accusantium. Aut nobis quia quia dolorem animi perferendis.""",
+            "question.png"),
 
     Article("Promotion", "18 août 2022", """Nouvelle promotion sur le site!
 Entrez le code BLOG25 pour profiter d'un rabais de 25%!
@@ -283,8 +306,8 @@ Dolor quasi sit atque explicabo impedit. Fuga dolores ex soluta. Corrupti aut ip
 
 Ea aut voluptate a ipsum molestiae pariatur. Non ex veniam ea. Culpa est odio vel beatae ut.
 
-Autem dignissimos esse mollitia eius voluptatem sit cum. Vero alias temporibus blanditiis optio maiores voluptatem natus provident. Repudiandae sint amet officia nesciunt. Reiciendis eligendi sed veniam repudiandae odit accusantium. Aut nobis quia quia dolorem animi perferendis.""", "question.png"),
-
+Autem dignissimos esse mollitia eius voluptatem sit cum. Vero alias temporibus blanditiis optio maiores voluptatem natus provident. Repudiandae sint amet officia nesciunt. Reiciendis eligendi sed veniam repudiandae odit accusantium. Aut nobis quia quia dolorem animi perferendis.""",
+            "question.png"),
 
     Article("Promotion", "18 août 2022", """Nouvelle promotion sur le site!
 Entrez le code LATIN20 pour profiter d'un rabais de 20%!
@@ -302,10 +325,7 @@ Ullam non modi accusamus repellat numquam dolorem. Eos a culpa corrupti ad ipsam
 
 """, "mouse.png"),
 
-
 ]
-
-
 
 choix_composantes = {
     'case': [
