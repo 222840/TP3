@@ -16,7 +16,7 @@
     <div class="topnav">
         <a href= "/"><i class="fa fa-fw fa-home"></i>Acceuil</a>
         <a href="/construire/">Construire un ordinateu</a>
-        <a class="active" href="/blog/">Blog</a>
+        <a class="active" href="/blog/1">Blog</a>
         <a href= "/glossaire/">Glossaire </a>
         <a href="/contact/"><i class="fa fa-fw fa-envelope"></i> Contact</a>
     </div>
@@ -27,14 +27,44 @@
     </header>
 
     <section>
-        {%for i in article_de_la_page :%}
+        {%for i in contenue :%}
         <p>{{i}}</p>
         {% endfor %}
     </section>
 
 
     <section>
+        <!--https://betterprogramming.pub/simple-flask-pagination-example-4190b12c2e2e-->
+         <!--https://docs.djangoproject.com/fr/4.1/topics/pagination/-->
+        <!--https://www.w3schools.com/howto/howto_css_pagination.asp-->
 
+        {% for i in page_active.object_list: %}
+    {# Each "contact" is a Contact model object. #}
+    <p>{{ i }}</p><br>
+    ...
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_active.has_previous %}
+
+            <a href="/blog/1">&laquo; first</a>
+            <a href="/blog/{{ page_precedente }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ p.number }} of {{ p.num_pages }}.
+        </span>
+
+        {% if page_active.has_next %}
+            <a href="/blog/{{page_suivante}}">next</a>
+            <a href="/blog/{{ page_active.paginator.num_pages }}">last &raquo;</a>
+        {% else %}
+            <a href="/blog/{{page_suivante}}">next</a>
+            <a href="/blog/{{ page_active.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
     </section>
 
 

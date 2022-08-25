@@ -36,6 +36,12 @@ class Article:
         self.numero = Article.numero
         Article.numero += 1
 
+    def get_texte(self):
+        return (self.texte)
+
+    def get_titre(self):
+        return (self.titre)
+
     def tableau_paragraphes(self):
         return self.texte.split('\n\n')
 
@@ -48,14 +54,6 @@ class Article:
 
         return 0
 
-    @staticmethod
-    def pagination():
-        if len(articles) % 3 == 0:
-            nb_pages = len(articles) / 3
-        else:
-            nb_pages = len(articles) // 3 + 1
-            modulo = len(articles) % 3
-        return [nb_pages, modulo]
 
 
 
