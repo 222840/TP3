@@ -42,8 +42,8 @@
     {# Each "contact" is a Contact model object. #}
     <p>{{ i }}</p><br>
     ...
-{% endfor %}
-
+    {% endfor %}
+        </section>
 <div class="pagination">
     <span class="step-links">
         {% if page_active.has_previous %}
@@ -53,7 +53,7 @@
         {% endif %}
 
         <span class="current">
-            Page {{ p.number }} of {{ p.num_pages }}.
+            Page {{ page_active.number }} of {{ p.num_pages }}.
         </span>
 
         {% if page_active.has_next %}
@@ -65,7 +65,7 @@
         {% endif %}
     </span>
 </div>
-    </section>
+
 
 
    <footer>{{annee}}-Ordinaland</footer>

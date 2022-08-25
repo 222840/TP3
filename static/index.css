@@ -81,10 +81,11 @@ text-align: center;
 footer{
     background-color:pink;
     text-align: center;
+    margin-top: 50px
 }
 
  /* Pagination links */
-.pagination a {
+.step-links a {
   color: black;
   float: left;
   padding: 8px 16px;
@@ -93,10 +94,10 @@ footer{
 }
 
 /* Style the active/current link */
-.pagination a.active {
+.step-links a.current {
   background-color: dodgerblue;
   color: white;
 }
 
 /* Add a grey background color on mouse-over */
-.pagination a:hover:not(.active) {background-color: #ddd;}
+.step-links a:hover:not(.active) {background-color: #ddd;}

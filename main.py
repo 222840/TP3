@@ -36,7 +36,7 @@ def blog(nb):
         page_suivante = page_active.next_page_number()
     else: page_suivante=p.num_pages
 
-    return render_template("blog.html",p=p,articles=articles,page_active=page_active,page_precedente=page_precedente,page_suivante=page_suivante)
+    return render_template("blog.html",p=p,articles=articles,page_active=page_active,page_precedente=page_precedente,page_suivante=page_suivante,annee=annee)
 
 def blog(nb):
     tab_contenue=[]
