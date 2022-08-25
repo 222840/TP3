@@ -10,17 +10,20 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    # TODO try catch
 
     return render_template("index.html",annee=annee,titre1=articles[0].titre,texte1=articles[0].texte,
                            titre2=articles[1].titre,texte2=articles[1].texte,titre3=articles[2].titre,texte3=articles[2].texte)
 
 @app.route("/construire/")
 def construire():
+    # TODO try catch
 
     return render_template("construire.html",annee=annee)
 
 @app.route("/blog/<int:nb>")
 def blog(nb):
+    #TODO try catch
     tab_contenue=[]
     p=Paginator(tab_contenue,3)
 
@@ -39,6 +42,7 @@ def blog(nb):
     return render_template("blog.html",p=p,articles=articles,page_active=page_active,page_precedente=page_precedente,page_suivante=page_suivante,annee=annee)
 
 def blog(nb):
+    # TODO try catch
     tab_contenue=[]
     p=Paginator(tab_contenue,3)
 
@@ -68,11 +72,13 @@ blog(5)
 
 @app.route("/glossaire/")
 def glossaire():
+    # TODO try catch
 
     return render_template("glossaire.html",annee=annee)
 
 @app.route("/contact/")
 def contact():
+    # TODO try catch
 
     return render_template("contact.html",annee=annee)
 
