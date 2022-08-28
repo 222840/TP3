@@ -24,48 +24,67 @@
     <header>
         <h1>OdrinaLand</h1>
         <p>La référence en matière d'ordinateurs</p>
+
     </header>
 
+
     <section>
-        {%for i in contenue :%}
-        <p>{{i}}</p>
+
+
+
+        {% for i in page_active : %}
+            <article class="page-blog">
+
+            <h1>{{i.titre}}</h1>
+            <p>{{i.tableau_paragraphes()[0]}}</p>
+
+            {% if i.tableau_paragraphes()|length >= 2 %}
+                {{i.tableau_paragraphes()[1]}}
+            {%endif%}
+
+                <br>
+            <a href= "/article/{{articles.index(i)+1}}">lire l'article </a>
+            </article>
+
         {% endfor %}
+
+
+
     </section>
 
+        <!--https://developer.mozilla.org/fr/docs/Web/CSS/Layout_cookbook/Pagination-->
+<nav aria-label="pagination">
+    <ul class="pagination">
+        {% if page_active.has_previous() %}
+        <li>
+            <a href="/blog/{{ page_precedente }}"><span aria-hidden="true">«</span>
+            <span class="visuallyhidden"></span>
+            </a>
+        </li>
 
-    <section>
-        <!--https://betterprogramming.pub/simple-flask-pagination-example-4190b12c2e2e-->
-         <!--https://docs.djangoproject.com/fr/4.1/topics/pagination/-->
-        <!--https://www.w3schools.com/howto/howto_css_pagination.asp-->
-
-        {% for i in page_active.object_list: %}
-    {# Each "contact" is a Contact model object. #}
-    <p>{{ i }}</p><br>
-    ...
-    {% endfor %}
-        </section>
-<div class="pagination">
-    <span class="step-links">
-        {% if page_active.has_previous %}
-
-            <a href="/blog/1">&laquo; first</a>
-            <a href="/blog/{{ page_precedente }}">previous</a>
         {% endif %}
 
-        <span class="current">
-            Page {{ page_active.number }} of {{ p.num_pages }}.
-        </span>
+        {% for i in range (page_active.paginator.num_pages): %}
+        {% if page_active.number == i+1 %}
+        <li>
+            <a> <span class="isDisabled">{{page_active.number}} </span></a>
 
-        {% if page_active.has_next %}
-            <a href="/blog/{{page_suivante}}">next</a>
-            <a href="/blog/{{ page_active.paginator.num_pages }}">last &raquo;</a>
+        </li>
         {% else %}
-            <a href="/blog/{{page_suivante}}">next</a>
-            <a href="/blog/{{ page_active.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
 
+        <span class="visuallyhidden"></span></a></li>
+        <li><a href=/blog/{{i+1}}><span class="visuallyhidden"> </span>{{i+1}}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_active.has_next() %}
+        <li><a href="/blog/{{page_suivante}}"><span class="visuallyhidden"></span><span aria-hidden="true">»</span></a></li>
+
+        {% endif %}
+
+
+    </ul>
+</nav>
 
 
    <footer>{{annee}}-Ordinaland</footer>

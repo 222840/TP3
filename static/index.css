@@ -12,7 +12,7 @@ header {
     text-align :center;
     padding: 200px;
     padding-top:0px;
-    background-color:darkgray;
+    background-color:#ff00874f;
 
 
 
@@ -52,6 +52,7 @@ h1{
 h2 {
     text-align: center;
 
+
 }
 section {
     text-align: center;
@@ -61,12 +62,12 @@ iframe{
     height;500px;
     margin-left:25%
 }
-pre {
+pre  {
    padding: 15px;
    border: 5px solid black;
    top-margin:0px;
    margin:30%;
-   margin-bottom: 40px;
+   margin-bottom: 0px;
    margin-top: 40px;
    padding-top: 10px;
    padding-bottom:
@@ -74,7 +75,18 @@ pre {
 }
 
 p {
-text-align: center;
+    margin: 50px
+
+
+
+}
+
+article{
+    background-color:pink;
+    margin: 30px;
+    padding: .3rem;
+    background-color: #eee;
+    font: 1rem 'Fira Sans', sans-serif;
 
 }
 
@@ -84,20 +96,62 @@ footer{
     margin-top: 50px
 }
 
- /* Pagination links */
-.step-links a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    color: #333;
+}
+
+.pagination {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.pagination li {
+    margin: 0 1px;
+
+}
+
+a.isDisabled {
+  pointer-events: none;
+  color: blue;
+  cursor: not-allowed;
+  opacity: 0.5;
   text-decoration: none;
-  transition: background-color .3s;
+
 }
 
-/* Style the active/current link */
-.step-links a.current {
-  background-color: dodgerblue;
-  color: white;
+a.menu-acceuil{
+    pointer-events: none;
+    background-color: #333;
 }
 
-/* Add a grey background color on mouse-over */
-.step-links a:hover:not(.active) {background-color: #ddd;}
+.pagination a[aria-current="page"] {
+    background-color: #333;
+    color: #fff;
+    background-color: #8080804d
+
+}
+.pagination a {
+    display: block;
+    padding: 0.5em 1em;
+    border: 1px solid #999;
+    border-radius: 0.2em;
+    text-decoration: none;
+}
+
+
+li {
+    text-align: -webkit-match-parent;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    font: 1.2em / 1.5 Helvetica Neue, Helvetica, Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+}

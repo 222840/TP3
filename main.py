@@ -10,10 +10,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    # TODO try catch
+    # TODO try catch  {% for i  in range (0,3)  %}
 
-    return render_template("index.html",annee=annee,titre1=articles[0].titre,texte1=articles[0].texte,
-                           titre2=articles[1].titre,texte2=articles[1].texte,titre3=articles[2].titre,texte3=articles[2].texte)
+
+    return render_template("index.html",annee=annee,articles=articles)
 
 @app.route("/construire/")
 def construire():
@@ -25,49 +25,22 @@ def construire():
 def blog(nb):
     #TODO try catch
     tab_contenue=[]
-    p=Paginator(tab_contenue,3)
+    p=Paginator(articles,3)
 
     for i in articles:
-        tab_contenue.append(i.get_texte())
+        tab_contenue.append(i.tableau_paragraphes())
+
     page_active=p.page(nb)
 
-    if page_active.has_previous():
-        page_precedente = page_active.previous_page_number()
-    else:page_precedente = page_active.start_index()
+    return render_template("blog.html",p=p,articles=articles,page_active=page_active,annee=annee)
 
-    if page_active.has_next():
-        page_suivante = page_active.next_page_number()
-    else: page_suivante=p.num_pages
 
-    return render_template("blog.html",p=p,articles=articles,page_active=page_active,page_precedente=page_precedente,page_suivante=page_suivante,annee=annee)
-
-def blog(nb):
+@app.route("/article/<int:nb>")
+def article(nb):
     # TODO try catch
-    tab_contenue=[]
-    p=Paginator(tab_contenue,3)
 
-    for i in articles:
-        tab_contenue.append(i.get_texte())
-    page_active=p.page(nb)
 
-    if page_active.has_previous():
-        page_precedente = page_active.previous_page_number()
-    else:
-        page_precedente = page_active.start_index()
-
-    if page_active.has_next():
-        page_suivante = page_active.next_page_number()
-    else:
-        page_suivante = page_active.end_index()
-    print(page_active)
-    print(page_suivante)
-    print(page_precedente)
-    print(p.num_pages)
-    print(len(tab_contenue))
-    for i in page_active.object_list:
-        print(i)
-blog(5)
-
+    return render_template("article.html",articles=articles,nb=nb-1,annee=annee)
 
 
 @app.route("/glossaire/")

@@ -36,11 +36,11 @@ class Article:
         self.numero = Article.numero
         Article.numero += 1
 
-    def get_texte(self):
-        return (self.texte)
-
-    def get_titre(self):
-        return (self.titre)
+    # def get_texte(self):
+    #     return (self.texte)
+    #
+    # def get_titre(self):
+    #     return (self.titre)
 
     def tableau_paragraphes(self):
         return self.texte.split('\n\n')
@@ -48,11 +48,13 @@ class Article:
     def temps_lecture(self):
         RYTHME_LECTURE = 200 / 60
         nb_mots = len(self.texte.split())
-        temps_lecture = nb_mots / RYTHME_LECTURE
+        temps_lecture = round(nb_mots / RYTHME_LECTURE)
         # TODO
-        print("Le temps estimé requis pour lire l'article (en secondes) est:" + temps_lecture)
 
-        return 0
+
+        return f" Temps de lecture : {temps_lecture} secondes"
+
+
 
 
 

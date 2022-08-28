@@ -14,6 +14,8 @@
 
 
     <div class="topnav">
+
+        <a> <span class="menu-acceuil">OdrinaLand</span></a>
         <a class="active" href="/"><i class="fa fa-fw fa-home"></i>Acceuil</a>
         <a href= "/construire/">Construire un ordinateur</a>
         <a href="/blog/1">Blog</a>
@@ -35,24 +37,33 @@
         </pre>
     </section>
     <h1>Sur le Blog...</h1>
+
     <section>
-        <pre>
-            <h1>{{titre1}}</h1>
-            <p>{{texte1}}</p>
-        </pre>
+    {% for i  in range (0,3)  %}
+        <article class="blog-acceuil">
+            <h1>{{articles[i].titre}}</h1>
+        {%for y in range (0,articles[i].tableau_paragraphes()|length)%}
+            {% if y >= 2 %}
+                {% for y in range (0,2) %}
+
+                  <p> {{articles[i].tableau_paragraphes()[z]}}</p>
+
+                {%endfor%}
+            {% else %}
+
+                <p>{{articles[i].tableau_paragraphes()[y]}}</p>
+            {% endif %}
+        {% endfor %}
+    </article>
+    {% endfor %}
     </section>
-    <section>
-        <pre>
-            <h1>{{titre2}}</h1>
-            <p>{{texte2}}</p>
-        </pre>
-    </section>
-    <section>
-        <pre>
-            <h1>{{titre3}}</h1>
-            <p>{{texte3}}</p>
-        </pre>
-    </section>
+
+
+
+
+
+
+
     <p><a href= "/blog/1">Voir tous les articles de blog</a></p>
 
 
