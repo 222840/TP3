@@ -36,11 +36,6 @@ class Article:
         self.numero = Article.numero
         Article.numero += 1
 
-    # def get_texte(self):
-    #     return (self.texte)
-    #
-    # def get_titre(self):
-    #     return (self.titre)
 
     def tableau_paragraphes(self):
         return self.texte.split('\n\n')
