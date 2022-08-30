@@ -11,10 +11,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    # TODO try catch  {% for i  in range (0,3)  %}
+    # TODO try catch
 
+    if len(articles) < 3:
+        nombre_articles = len(articles)
+    else: nombre_articles = 3
 
-    return render_template("index.html",annee=annee,articles=articles)
+    return render_template("index.html",annee=annee,articles=articles,nombre_articles=nombre_articles)
 
 @app.route("/construire/")
 def construire():
@@ -44,9 +47,14 @@ def blog(nb):
 @app.route("/article/<int:nb>")
 def article(nb):
     # TODO try catch
+    try:
 
+        return render_template("article.html",articles=articles,nb=nb-1,annee=annee)
 
-    return render_template("article.html",articles=articles,nb=nb-1,annee=annee)
+    except:
+        nb=1
+        return render_template("article.html", articles=articles, nb=nb - 1, annee=annee)
+
 
 
 @app.route("/glossaire/")

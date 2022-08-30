@@ -15,8 +15,6 @@ header {
     background-image: url("moderbord.png");
     color: white
 
-
-
     }
 
 body {
@@ -28,6 +26,9 @@ body {
     .topnav {
       overflow: hidden;
       background-color: #7aa4e9;
+      border: groove 1em #123c7085;
+      border-radius: 30px;
+
     }
     
     .topnav a {
@@ -54,11 +55,23 @@ h1{
 h2 {
     text-align: center;
 
-
 }
 section {
     text-align: center;
+
 }
+
+aside{
+    background: #a4aabb;
+    border: groove 1em #123c7085;
+    border-radius: 50% 20% / 10% 40%;
+    margin-left:20%;
+    margin-right:20%
+
+
+}
+
+
 iframe{
     width:50% ;
     height;500px;
@@ -88,14 +101,21 @@ article{
     padding: .3rem;
     background-color: #eee;
     font: 1rem 'Fira Sans', sans-serif;
-
+    border: groove 1em #123c7085;
+    border-radius: 25% 10%;
 }
+
+
 
 footer{
     background-color:#7aa4e9;
     text-align: center;
     margin-top: 100px;
+    margin-left: 15%;
+    margin-right: 15%;
     margin-bottom:50px;
+    border: groove 1em #123c7085;
+    border-radius: 25% 10%;
 
 
 }
@@ -105,6 +125,8 @@ nav {
     justify-content: center;
     background-color: #fff;
     color: #333;
+    border: groove 1em #123c7085;
+    border-radius: 25% 10%;
 }
 
 .pagination {
