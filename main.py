@@ -1,6 +1,6 @@
 from ordinaland import *
 from flask import Flask,request,render_template
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator,InvalidPage
 
 import datetime
 maintenent=datetime.datetime.now()
@@ -9,7 +9,6 @@ annee=maintenent.year
 app = Flask(__name__)
 
 
-#test
 @app.route("/")
 def index():
     # TODO try catch  {% for i  in range (0,3)  %}
@@ -23,7 +22,7 @@ def construire():
 
     return render_template("construire.html",annee=annee)
 
-@app.route("/blog/<int:nb>")
+@app.route("/blog/<nb>")
 def blog(nb):
     #TODO try catch
     tab_contenue=[]
@@ -32,9 +31,14 @@ def blog(nb):
     for i in articles:
         tab_contenue.append(i.tableau_paragraphes())
 
-    page_active=p.page(nb)
+    try :
+        page_active=p.page(nb)
 
-    return render_template("blog.html",p=p,articles=articles,page_active=page_active,annee=annee)
+    except (InvalidPage):
+        page_active = p.page(1)
+
+
+    return render_template("blog.html",p=p,articles=articles,page_active=page_active,annee=annee,)
 
 
 @app.route("/article/<int:nb>")

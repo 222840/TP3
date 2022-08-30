@@ -12,7 +12,7 @@
 
 <body>
 
-
+     <!--https://www.w3schools.com/howto/howto_js_topnav.asp-->
     <div class="topnav">
 
         <a> <span class="menu-acceuil">OdrinaLand</span></a>
@@ -20,7 +20,7 @@
         <a href= "/construire/">Construire un ordinateur</a>
         <a href="/blog/1">Blog</a>
         <a href= "/glossaire/">Glossaire</a>
-        <a href="/contact/"><i class="fa fa-fw fa-envelope"></i>Contact</a>
+        <a href="/contact/"><i class="fa fa-fw fa-map-marker"></i>Contact</a>
     </div>
 
 
@@ -30,13 +30,13 @@
     </header>
 
     <section>
-        <pre>
+
         <h1>Première visite sur le site? </h1>
         <p>Faite un tour sur notre <a href= "/construire/">outil d'aide à monter un ordinateur</a></p>
 
-        </pre>
-    </section>
     <h1>Sur le Blog...</h1>
+
+    </section>
 
     <section>
     {% for i  in range (0,3)  %}
@@ -67,6 +67,6 @@
     <p><a href= "/blog/1">Voir tous les articles de blog</a></p>
 
 
-   <footer>{{annee}}-Ordinaland</footer>
+   <footer>{{annee}} - Ordinaland</footer>
 </body>
 </html>
