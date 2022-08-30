@@ -29,17 +29,18 @@
         <p1>La référence en matière d'ordinateurs</p1>
     </header>
 
-    <section>
+    <aside>
 
         <h1>Première visite sur le site? </h1>
         <p>Faite un tour sur notre <a href= "/construire/">outil d'aide à monter un ordinateur</a></p>
 
     <h1>Sur le Blog...</h1>
 
-    </section>
+    </aside>
 
     <section>
-    {% for i  in range (0,3)  %}
+
+    {% for i  in range (0,nombre_articles)  %}
         <article class="blog-acceuil">
             <h1>{{articles[i].titre}}</h1>
         {%for y in range (0,articles[i].tableau_paragraphes()|length)%}
@@ -54,6 +55,7 @@
                 <p>{{articles[i].tableau_paragraphes()[y]}}</p>
             {% endif %}
         {% endfor %}
+
     </article>
     {% endfor %}
     </section>

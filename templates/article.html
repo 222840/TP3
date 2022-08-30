@@ -31,11 +31,11 @@
 
     <section><img src="/static/{{articles[nb].image}}" alt="image"></section>
 
-
+    <article>
         {%for i in articles[nb].tableau_paragraphes()%}
            <p> {{i}} </p>
         {%endfor%}
-
+    </article>
 
     <section>
         <h3>Plus d'articles...</h3>
