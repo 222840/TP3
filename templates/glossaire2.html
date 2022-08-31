@@ -6,34 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/static/index.css" rel="stylesheet" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Acceuil</title>
-    <link rel="icon" type="image/x-icon" href="/static/penguin.png">
+    <title>Glossaire mot</title>
 </head>
-
 <body>
-
-
-    <div class="topnav">
-        <a> <span class="menu-acceuil">OdrinaLand</span></a>
+   <div class="topnav">
         <a href= "/"><i class="fa fa-fw fa-home"></i>Acceuil</a>
         <a href="/construire/">Construire un ordinateu</a>
         <a href="/blog/1">Blog</a>
         <a class="active" href="/glossaire/">Glossaire</a>
-        <a href="/contact/"><i class="fa fa-fw fa-map-marker"></i>Contact</a>
+        <a href="/contact/"><i class="fa fa-fw fa-envelope"></i>Contact</a>
     </div>
     <header>
         <h1>OdrinaLand</h1>
         <p>La référence en matière d'ordinateurs</p>
     </header>
-    <br>
-   <h3>Glossaire</h3>
 
-   {%for i in range( glossaire|length) %}
 
-    <li><a href="/glossaire/{{i}}">{{glossaire[i].terme.capitalize()}}</a></li>
-    <br>
-   {%endfor%}
+    <div>
+        <h3>Définition: {{glossaire[nb].terme}}</h3>
+        <p>{{glossaire[nb].texte}}</p>
+        <br>
+        <p>Source:<a href="{{glossaire[nb].source}}">{{glossaire[nb].source}}</a> </p>
+        <br>
+        <h3>Mots reliés</h3>
 
-   <footer>{{annee}}-Ordinaland</footer>
+        {%for i in glossaire[nb].termes_relies()%}
+            <li><a href="/glossaire/{{i}}">{{i}}</a></li>
+        {% endfor %}
+
+        <a href="/glossaire">Revenir au Glossaire</a>
+
+
+
+    </div>
+
+
+
+    <footer>{{annee}}-Ordinaland</footer>
 </body>
 </html>

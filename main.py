@@ -8,22 +8,29 @@ annee=maintenent.year
 
 app = Flask(__name__)
 
+if Article.numero <= 0:articles = [Article("Aucun article pour le moment","","","")]
+
 
 @app.route("/")
 def index():
     # TODO try catch
 
-    if len(articles) < 3:
+    if  Article.numero < 3:
         nombre_articles = len(articles)
-    else: nombre_articles = 3
+
+    else : nombre_articles = 3
 
     return render_template("index.html",annee=annee,articles=articles,nombre_articles=nombre_articles)
+
+
+
 
 @app.route("/construire/")
 def construire():
     # TODO try catch
 
-    return render_template("construire.html",annee=annee)
+    return render_template("construire.html",annee=annee,choix_composantes=choix_composantes  )
+
 
 @app.route("/blog/<nb>")
 def blog(nb):
@@ -40,7 +47,6 @@ def blog(nb):
     except (InvalidPage):
         page_active = p.page(1)
 
-
     return render_template("blog.html",p=p,articles=articles,page_active=page_active,annee=annee,)
 
 
@@ -56,10 +62,22 @@ def article(nb):
         return render_template("article.html", articles=articles, nb=nb - 1, annee=annee)
 
 
-
 @app.route("/glossaire/")
-def glossaire():
+def glossair():
     # TODO try catch
+
+    return render_template("glossaire.html",annee=annee,glossaire=glossaire)
+
+
+
+
+@app.route("/glossaire/<int:nb>")
+
+def glossaire2(nb):
+
+    return render_template("glossaire2.html", glossaire=glossaire, nb=nb, annee=annee)
+
+
 
     return render_template("glossaire.html",annee=annee)
 

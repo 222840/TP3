@@ -17,11 +17,9 @@ class Definition:
             if definition.terme in self.texte:
                 tab_termes.append(definition.terme)
 
-        print('Les mots reliés dans le Glossaire:' + tab_termes)
 
-        print(glossaire)
 
-        return []
+        return [tab_termes]
 
 
 class Article:
