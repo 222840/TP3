@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/index.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Acceuil</title>
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href= "/"><i class="fa fa-fw fa-home"></i>Acceuil</a>
+        <a class="active" href="/construire/">Construire un ordinateur</a>
+        <a href="/blog/1">Blog</a>
+        <a href= "/glossaire/">Glossaire</a>
+        <a href="/contact/"><i class="fa fa-fw fa-envelope"></i>Contact</a>
+    </div>
+
+    <header>
+        <h1>OdrinaLand</h1>
+        <p>La référence en matière d'ordinateurs</p>
+    </header>
+    <div>
+    <h1>Monter votre ordinateur</h1>
+    <p>Cette page sert d'assistant pour choisir les composantes de votre futur ordinateur</p>
+     </div>
+    <form action="/afficher-ordinateur" method="post">
+    <div>
+        <h1>Case
+          <a href="{{glossaire[0].decription}}">(description)</a>
+        </h1>
+        <input type="radio" id="1" name="case" value="1">
+        <label for="1">{{choix_composantes["case"][0].prix}}$-{{choix_composantes["case"][0].description}}
+           <a href="{{choix_composantes['case'][0].lien}}">[voir]</a>
+        </label>
+        <br>
+        <input type="radio" id="2" name="case" value="2">
+        <label for="2">{{choix_composantes["case"][1].prix}}$-{{choix_composantes["case"][1].description}}
+              <a href="{{choix_composantes['case'][1].lien}}">[voir]</a>
+        </label>
+        <br>
+        <input type="radio" id="3" name="case" value="3">
+        <label for="3">{{choix_composantes["case"][2].prix}}$-{{choix_composantes["case"][2].description}}
+            <a href="{{choix_composantes['case'][2].lien}}">[voir]</a>
+        </label>
+    </div>
+    <br>
+    <div>
+         <h1>Motherboard
+             <a href="{{glossaire[1].decription}}">(description)</a>
+         </h1>
+         <input type="radio" id="1" name="motherboard" value="1">
+         <label for="1">{{choix_composantes["motherboard"][0].prix}}$-{{choix_composantes["motherboard"][0].description}}
+             <a href="{{choix_composantes['motherboard'][0].lien}}">[voir]</a>
+         </label>
+         <br>
+         <input type="radio" id="2" name="motherboard" value="2">
+         <label for="2">{{choix_composantes["motherboard"][1].prix}}$-{{choix_composantes["motherboard"][1].description}}
+             <a href="{{choix_composantes['motherboard'][1].lien}}">[voir]</a>
+         </label>
+    </div>
+    <br>
+    <div>
+        <h1>Cpu
+           <a href="{{glossaire[2].decription}}">(description)</a>
+        </h1>
+        <input type="radio" id="1" name="cpu" value="1">
+        <label for="1">{{choix_composantes["cpu"][0].prix}}$-{{choix_composantes["cpu"][0].description}}
+           <a href="{{choix_composantes['cpu'][0].lien}}">[voir]</a>
+        </label>
+        <br>
+        <input type="radio" id="2" name="cpu" value="2">
+        <label for="2">{{choix_composantes["cpu"][1].prix}}$-{{choix_composantes["cpu"][1].description}}
+            <a href="{{choix_composantes['cpu'][1].lien}}">[voir]</a>
+        </label>
+        <br>
+        <input type="radio" id="3" name="cpu" value="3">
+        <label for="3">{{choix_composantes["cpu"][2].prix}}$-{{choix_composantes["cpu"][2].description}}
+          <a href="{{choix_composantes['cpu'][2].lien}}">[voir]</a>
+        </label>
+        <br>
+        <input type="radio" id="4" name="cpu" value="4">
+        <label for="4">{{choix_composantes["cpu"][3].prix}}$-{{choix_composantes["cpu"][3].description}}
+               <a href="{{choix_composantes['cpu'][3].lien}}">[voir]</a>
+        </label>
+    </div>
+    <br>
+    <div>
+         <h1>Storage
+           <a href="{{glossaire[3].decription}}">(description)</a>
+         </h1>
+         <input type="radio" id="1" name="storage" value="1">
+         <label for="1">{{choix_composantes["storage"][0].prix}}$-{{choix_composantes["storage"][0].description}}
+           <a href="{{choix_composantes['storage'][0].lien}}">[voir]</a>
+         </label>
+         <br>
+         <input type="radio" id="2" name="storage" value="2">
+         <label for="2">{{choix_composantes["storage"][1].prix}}$-{{choix_composantes["storage"][1].description}}
+             <a href="{{choix_composantes['storage'][1].lien}}">[voir]</a>
+         </label>
+         <br>
+         <input type="radio" id="3" name="storage" value="3">
+         <label for="3">{{choix_composantes["storage"][2].prix}}$-{{choix_composantes["storage"][2].description}}
+             <a href="{{choix_composantes['storage'][2].lien}}">[voir]</a>
+         </label>
+    </div>
+    <br>
+    <div>
+         <h1>Cooling
+            <a href="{{glossaire[4].decription}}">(description)</a>
+         </h1>
+         <input type="radio" id="1" name="cooling" value="1">
+         <label for="1">{{choix_composantes["cooling"][0].prix}}$-{{choix_composantes["cooling"][0].description}}
+             <a href="{{choix_composantes['cooling'][0].lien}}">[voir]</a>
+         </label>
+         <br>
+         <input type="radio" id="2" name="cooling" value="2">
+             <label for="2">{{choix_composantes["cooling"][1].prix}}$-{{choix_composantes["cooling"][1].description}}
+                 <a href="{{choix_composantes['cooling'][1].lien}}">[voir]</a>
+         </label>
+         <br>
+         <input type="radio" id="3" name="cooling" value="3">
+         <label for="3">{{choix_composantes["cooling"][2].prix}}$-{{choix_composantes["cooling"][2].description}}
+         <a href="{{choix_composantes['cooling'][2].lien}}">[voir]</a>
+         </label>
+    </div>
+    <br>
+    <div>
+    <h1>Ram
+        <a href="{{glossaire[5].decription}}">(description)</a>
+    </h1>
+    <input type="radio" id="1" name="ram" value="1">
+    <label for="1">{{choix_composantes["ram"][0].prix}}$-{{choix_composantes["ram"][0].description}}
+      <a href="{{choix_composantes['ram'][0].lien}}">[voir]</a>
+    </label>
+    <br>
+    <input type="radio" id="2" name="ram" value="2">
+    <label for="2">{{choix_composantes["ram"][1].prix}}$-{{choix_composantes["ram"][1].description}}
+      <a href="{{choix_composantes['ram'][1].lien}}">[voir]</a>
+    </label>
+    </div>
+    <br>
+    <div>
+    <h1>Power
+       <a href="{{glossaire[6].decription}}">(description)</a>
+    </h1>
+    <input type="radio" id="1" name="power" value="1">
+    <label for="1">{{choix_composantes["power"][0].prix}}$-{{choix_composantes["power"][0].description}}
+      <a href="{{choix_composantes['power'][0].lien}}">[voir]</a>
+    </label>
+    <br>
+
+    <input type="radio" id="2" name="power" value="2">
+    <label for="2">{{choix_composantes["power"][1].prix}}$-{{choix_composantes["power"][1].description}}
+      <a href="{{choix_composantes['power'][1].lien}}">[voir]</a>
+    </label>
+    </div>
+    <br>
+    <div>
+    <h1>Keyboard
+        <a href="{{glossaire[7].decription}}">(description)</a>
+    </h1>
+    <input type="radio" id="1" name="keyboard" value="1">
+    <label for="1">{{choix_composantes["keyboard"][0].prix}}$-{{choix_composantes["keyboard"][0].description}}
+      <a href="{{choix_composantes['keyboard'][0].lien}}">[voir]</a>
+    </label>
+    <br>
+    <input type="radio" id="2" name="keyboard" value="2">
+    <label for="2">{{choix_composantes["keyboard"][1].prix}}$-{{choix_composantes["keyboard"][1].description}}
+      <a href="{{choix_composantes['keyboard'][1].lien}}">[voir]</a>
+    </label>
+    <br>
+    <input type="radio" id="3" name="keyboard" value="3">
+    <label for="3">{{choix_composantes["keyboard"][2].prix}}$-{{choix_composantes["keyboard"][2].description}}
+      <a href="{{choix_composantes['keyboard'][2].lien}}">[voir]</a>
+    </label>
+    </div>
+    <br>
+    <div>
+    <h1>Mouse
+       <a href="{{glossaire[8].decription}}">(description)</a>
+    </h1>
+    <input type="radio" id="1" name="mouse" value="1">
+    <label for="1">{{choix_composantes["mouse"][0].prix}}$-{{choix_composantes["mouse"][0].description}}
+      <a href="{{choix_composantes['mouse'][0].lien}}">[voir]</a>
+    </label>
+    <br>
+    <input type="radio" id="2" name="mouse" value="2">
+    <label for="2">{{choix_composantes["mouse"][1].prix}}$-{{choix_composantes["mouse"][1].description}}
+      <a href="{{choix_composantes['mouse'][1].lien}}">[voir]</a>
+    </label>
+    <br>
+    <input type="radio" id="3" name="mouse" value="3">
+    <label for="mouse3">{{choix_composantes["mouse"][2].prix}}$-{{choix_composantes["mouse"][2].description}}
+      <a href="{{choix_composantes['mouse'][2].lien}}">[voir]</a>
+    </label>
+    </div>
+    <br>
+    <div>
+        <h1>Monitor
+    <a href="{{glossaire[9].decription}}">(description)</a>
+    </h1>
+    <input type="radio" id="1" name="monitor" value="1">
+    <label for="1">{{choix_composantes["monitor"][0].prix}}$-{{choix_composantes["monitor"][0].description}}
+      <a href="{{choix_composantes['monitor'][0].lien}}">[voir]</a>
+    </label>
+    <br>
+
+    <input type="radio" id="2" name="monitor" value="2">
+    <label for="2">{{choix_composantes["monitor"][1].prix}}$-{{choix_composantes["monitor"][1].description}}
+      <a href="{{choix_composantes['monitor'][1].lien}}">[voir]</a>
+    </label>
+    </div>
+    <br>
+    <div>
+    <hr>
+    <label for="codepostal">Pour ajouter la livraison, entrez votre code postal:</label>
+    <input type="text" name="codepostal" id="codepostal" class="form control">
+    <hr>
+    <button class="btn btn-primary" type="submit" name="envoyer" id="envoyer" >Calculer le prix</button>
+    </div>
+    </form>
+        <footer>{{annee}}-Ordinaland</footer>
+</body>
+</html>
