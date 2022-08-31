@@ -43,7 +43,7 @@
         {% if nb >0 %}
             <a href=/article/{{nb }}>Article précédent :{{articles[nb-1].titre}}</a>
         {% endif %}
-
+        ||
         {% if nb < (articles|length)-1 %}
             <a href=/article/{{nb + 2}}>Article suivant :{{articles[nb+1].titre}}</a>
         {% endif %}

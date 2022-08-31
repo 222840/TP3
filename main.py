@@ -8,22 +8,27 @@ annee=maintenent.year
 
 app = Flask(__name__)
 
+if Article.numero <= 0:articles = [Article("Aucun article pour le moment","","","")]
+
 
 @app.route("/")
 def index():
     # TODO try catch
 
-    if len(articles) < 3:
+    if  Article.numero < 3:
         nombre_articles = len(articles)
-    else: nombre_articles = 3
+
+    else : nombre_articles = 3
 
     return render_template("index.html",annee=annee,articles=articles,nombre_articles=nombre_articles)
 
-@app.route("/construire/")
+
+@app.route("/monter-ordinateur")
 def construire():
     # TODO try catch
 
-    return render_template("construire.html",annee=annee)
+    return render_template("construire.html",annee=annee,choix_composantes=choix_composantes  )
+
 
 @app.route("/blog/<nb>")
 def blog(nb):
@@ -61,7 +66,7 @@ def article(nb):
 def glossaire():
     # TODO try catch
 
-    return render_template("glossaire.html",annee=annee)
+    return render_template("glossaire.html",annee=annee,glossaire=glossaire)
 
 @app.route("/contact/")
 def contact():
