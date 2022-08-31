@@ -23,7 +23,9 @@ def index():
     return render_template("index.html",annee=annee,articles=articles,nombre_articles=nombre_articles)
 
 
-@app.route("/monter-ordinateur")
+
+
+@app.route("/construire/")
 def construire():
     # TODO try catch
 
@@ -45,7 +47,6 @@ def blog(nb):
     except (InvalidPage):
         page_active = p.page(1)
 
-
     return render_template("blog.html",p=p,articles=articles,page_active=page_active,annee=annee,)
 
 
@@ -61,12 +62,23 @@ def article(nb):
         return render_template("article.html", articles=articles, nb=nb - 1, annee=annee)
 
 
-
 @app.route("/glossaire/")
-def glossaire():
+def glossair():
     # TODO try catch
 
     return render_template("glossaire.html",annee=annee,glossaire=glossaire)
+
+
+
+
+@app.route("/glossaire/<int:nb>")
+
+def glossaire2(nb):
+
+    return render_template("glossaire2.html", glossaire=glossaire, nb=nb, annee=annee)
+
+
+
 
 @app.route("/contact/")
 def contact():

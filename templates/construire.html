@@ -7,7 +7,6 @@
     <link href="/static/index.css" rel="stylesheet" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Acceuil</title>
-    <link rel="icon" type="image/x-icon" href="/static/penguin.png">
 </head>
 
 <body>
@@ -17,35 +16,55 @@
     <div class="topnav">
         <a> <span class="menu-acceuil">OdrinaLand</span></a>
         <a href= "/"><i class="fa fa-fw fa-home"></i>Acceuil</a>
-        <a class="active" href="/monter-ordinateur">Construire un ordinateur</a>
+        <a class="active" href="/construire/">Construire un ordinateur</a>
         <a href="/blog/1">Blog</a>
         <a href= "/glossaire/">Glossaire</a>
-        <a href="/contact/"><i class="fa fa-fw fa-map-marker"></i>Contact</a>
+        <a href="/contact/"><i class="fa fa-fw fa-envelope"></i>Contact</a>
     </div>
     <header>
         <h1>OdrinaLand</h1>
         <p>La référence en matière d'ordinateurs</p>
     </header>
-        <h1>Votre ordinateur</h1>
-    <ul>
-        <li>{{case}}</li>
-        <li>{{motherboard}}</li>
-        <li>{{cpu}}</li>
-        <li>{{storage}}</li>
-        <li>{{cooling}}</li>
-        <li>{{ram}}</li>
-        <li>{{power}}</li>
-        <li>{{keyboard}}</li>
-        <li>{{mouse}}</li>
-        <li>{{monitor}}</li>
-    </ul>
-    <p>Sous-total: {{sous_total}}$</p>
-    <p>Taxes: {{taxes}}$</p>
-    <p>Livraison: {{livraison}}$</p>
-    <h2>Total: {{total}}</h2>
 
-    <br>
-    <br>
+        <div>
+    <h1>Monter votre ordinateur</h1>
+    <p>Cette page sert d'assistant pour choisir les composantes de votre futur ordinateur</p>
+
+
+
+     </div>
+    <form action="/afficher-ordinateur" method="post">
+    <div>
+            {% for cle in choix_composantes.keys() %}
+            <h3>{{cle}}
+
+            </h3>
+
+
+                    {% for i in choix_composantes[cle] %}
+                        <br>
+                         <input type="radio" id="1" name="{{cle}}" value="1">
+                         <label for="1">{{i.prix}}$-{{i.description}}
+                         <a href="{{i.lien}}">[voir]</a>
+                         </label>
+                         </br>
+                    {% endfor %}
+
+        {% endfor %}
+    </div>
+
+
+    <div>
+    <hr>
+    <label for="codepostal">Pour ajouter la livraison, entrez votre code postal:</label>
+    <input type="text" name="codepostal" id="codepostal" class="form control">
+    <hr>
+    <button class="btn btn-primary" type="submit" name="envoyer" id="envoyer" >Calculer le prix</button>
+    </div>
+    </form>
+
+
+
 
 
 
