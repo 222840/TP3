@@ -19,7 +19,7 @@ class Definition:
 
 
 
-        return [tab_termes]
+        return tab_termes
 
 
 class Article:
