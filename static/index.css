@@ -1,7 +1,4 @@
-section {
-    /* Nos sections sont des carrés de taille 300x300 pixels */
 
-    }
 
 header {
     /* La hauteur est de 300px */
@@ -56,6 +53,16 @@ h2 {
     text-align: center;
 
 }
+h3{
+
+font-size: 2em
+}
+
+div {
+    margin-left:50px;
+}
+
+
 section {
     text-align: center;
 
@@ -172,5 +179,7 @@ a.menu-acceuil{
 
 li {
     text-align: -webkit-match-parent;
+
+        font-size: 1.5em
 }
 

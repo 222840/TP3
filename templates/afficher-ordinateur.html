@@ -13,26 +13,48 @@
 <body>
 
     <div class="topnav">
-        <a> <span class="menu-acceuil">OdrinaLand</span></a>
         <a href= "/"><i class="fa fa-fw fa-home"></i>Acceuil</a>
         <a href="/construire/">Construire un ordinateu</a>
         <a href="/blog/1">Blog</a>
         <a href="/glossaire/">Glossaire</a>
-        <a class="active" href="/contact/"><i class="fa fa-fw fa-map-marker"></i>Contact</a>
+        <a class="active" href="/contact/"><i class="fa fa-fw fa-envelope"></i>Contact</a>
     </div>
     <header>
         <h1>OdrinaLand</h1>
         <p>La référence en matière d'ordinateurs</p>
     </header>
-    <aside>
-    <h2>Pour nous contacter</h2>
-    <section>
-    <p>Nos bureaux sont ouvert 7 jour sur 7, de 8h à 19h</p>
-    <p>Passez nous voir !</p>
-    </section>
-    </aside>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2794.81420165011!2d-73.62297708424519!3d45.53394433680755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc919235d51a801%3A0x5fab2080f6ce34f!2sAgora%20num%C3%A9rique%2C%20Coll%C3%A8ge%20de%20Bois-de-Boulogne!5e0!3m2!1sfr!2sca!4v1661213265294!5m2!1sfr!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <br><br>
+    <h3>Votre ordinateur</h3>
+    <br>
+    <ul>
+        <li>{{case}}</li>
+        <br>
+        <li>{{motherboard}}</li>
+        <br>
+        <li>{{cpu}}</li>
+        <br>
+        <li>{{storage}}</li>
+        <br>
+        <li>{{cooling}}</li>
+        <br>
+        <li>{{ram}}</li>
+        <br>
+        <li>{{power}}</li>
+        <br>
+        <li>{{keyboard}}</li>
+        <br>
+        <li>{{mouse}}</li>
+        <br>
+        <li>{{monitor}}</li>
+    </ul>
+    <h3>Sous-total: {{sous_total}}$</h3>
+    <h3>Taxes: {{taxes}}$</h3>
+    <h3>Livraison: {{livraison}}$</h3>
+    <h1>Total: {{total}}</h1>
 
-       <footer>{{annee}}-Ordinaland</footer>
+    <br>
+    <br>
+    <br>
+    <footer>{{annee}}-Ordinaland</footer>
 </body>
 </html>
