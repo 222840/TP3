@@ -49,7 +49,12 @@
     </ul>
     <h3>Sous-total: {{sous_total}}$</h3>
     <h3>Taxes: {{taxes}}$</h3>
-    <h3>Livraison: {{livraison}}$</h3>
+    {%if livraison == 0 %}
+       <br>
+    {% else %}
+      <h3>Livraison: {{livraison}}$</h3>
+    {% endif %}
+
     <h1>Total: {{total}}</h1>
 
     <br>

@@ -18,7 +18,6 @@ class Definition:
                 tab_termes.append(definition.terme)
 
 
-
         return tab_termes
 
 
@@ -44,12 +43,7 @@ class Article:
         temps_lecture = round(nb_mots / RYTHME_LECTURE)
         # TODO
 
-
         return f" Temps de lecture : {temps_lecture} secondes"
-
-
-
-
 
 
 class Ordinateur:

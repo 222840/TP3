@@ -124,7 +124,6 @@ footer{
     border: groove 1em #123c7085;
     border-radius: 25% 10%;
 
-
 }
 
 nav {
@@ -183,3 +182,12 @@ li {
         font-size: 1.5em
 }
 
+.alerte{
+    background-color: yellow;
+    text-size:40px;
+    text-align: center;
+    width:80%;
+    border: 2px solid red;
+    margin-left: 10%;
+    margin-right: 15%;
+}
