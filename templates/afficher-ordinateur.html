@@ -27,7 +27,8 @@
      </div>
     <div class="alerte">
        {% if err == True %}
-           <h1> {{message_erreur}} </h1>
+           <h1> Votre ordinateur est incomplet </h1>
+            <h1> Vous avez {{var_form_construire|length}} article dans votre panier </h1>
        {% endif %}
     </div>
     <br><br>
