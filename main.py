@@ -106,19 +106,16 @@ def afficher_ordinateur():
         total = round(panier.total(),2)
 
 
-        if livraison == False:
-            err = True
-            message_erreur ="Code postale invalide "
+        if livraison == True:
+            err=True
+            message_erreur = "Code postale invalide "
+
+        if err ==True :
             return render_template("construire.html", annee=annee, choix_composantes=choix_composantes,
                                    glossaire=glossaire, err=err, message_erreur=message_erreur)
 
         return render_template("afficher-ordinateur.html",var_form_construire=var_form_construire,annee=annee,
-                           sous_total=round(sous_total,2),taxes=round(taxes,2),total=round(total,2)+livraison,livraison=round(livraison,2),message_erreur=message_erreur,err=err)
-
-    # except:
-    #     erreur=1
-    #     message_erreur="Erreur!. Veuillez faire le choix de toutes les composantes et entrez un code postal valide"
-    #     return render_template("construire.html", annee=annee, choix_composantes=choix_composantes, glossaire=glossaire,err=1, message=message_erreur)
+                           sous_total=round(sous_total,2),taxes=round(taxes,2),total=round(total,2)+livraison,livraison=round(livraison,2))
 
 
 
@@ -127,8 +124,12 @@ def calculerLivraison(codepostal):
     texte='ABCEGHJKLMNPRSTVXY'
     codepostal=codepostal.upper()
     print(codepostal)
-    if (len(codepostal) !=6):
-        return False
+
+    if (len(codepostal)==0):
+        return 0
+
+    elif (len(codepostal) !=6 ):
+        return True
 
     elif (not codepostal[0] in texte)or(not codepostal[2].isalpha())or(not codepostal[4] in texte)or\
         (not codepostal[1].isnumeric())or(not codepostal[3].isnumeric())or(not codepostal[5].isnumeric()):
