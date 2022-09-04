@@ -47,7 +47,7 @@
                         <br>
                          <input type="radio" id={{i}} name="{{cle}}" value={{i}}>
                          <label for={{i}}>{{choix_composantes[cle][i].description}}$-{{choix_composantes[cle][i].prix}}
-                         <a href="{{cle.lien}}">[voir]</a>
+                         <a href="{{choix_composantes[cle][i].lien}}">[voir]</a>
                          </label>
                          </br>
                     {% endfor %}
