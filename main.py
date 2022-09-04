@@ -99,9 +99,7 @@ def afficher_ordinateur():
     livraison = calculerLivraison(codepostal)
     panier=Ordinateur(var_form_construire)
 
-    sous_total = "{:.2f}".format(panier.sous_total())
-    taxes = "{:.2f}".format(panier.taxes())
-    total = "{:.2f}".format(panier.total())
+
 
 
     if livraison == True:
@@ -114,10 +112,14 @@ def afficher_ordinateur():
     if len(var_form_construire) != 10:
         err=True
 
+    sous_total = "{:.2f}".format(panier.sous_total())
+    taxes = "{:.2f}".format(panier.taxes())
+    total = "{:.2f}".format(panier.total()+(livraison))
+
 
 
     return render_template("afficher-ordinateur.html",var_form_construire=var_form_construire,annee=annee,
-                       sous_total=sous_total,taxes=taxes,total=float(total)+float(livraison),livraison=livraison,err=err)
+                       sous_total=sous_total,taxes=taxes,total=total,livraison=livraison,err=err)
 
 
 
