@@ -27,25 +27,30 @@
     <h3>Votre ordinateur</h3>
     <br>
     <ul>
-        <li>{{case}}</li>
+        <li>{{dictionnaire["case"].description}}</li>
+        <ul><li>{{dictionnaire["case"].prix}}$</li></ul>
         <br>
-        <li>{{motherboard}}</li>
+        <li>{{dictionnaire["motherboard"].description}}</li>
+        <ul><li>{{dictionnaire["motherboard"].prix}}$</li></ul>
         <br>
-        <li>{{cpu}}</li>
+        <li>{{dictionnaire["cpu"].description}}</li>
+        <ul><li>{{dictionnaire["cpu"].prix}}$</li></ul>
         <br>
-        <li>{{storage}}</li>
+        <li>{{dictionnaire["storage"].description}}</li>
+        <ul><li>{{dictionnaire["storage"].prix}}$</li></ul>
         <br>
-        <li>{{cooling}}</li>
+        <li>{{dictionnaire["cooling"].description}}</li>
+        <ul><li>{{dictionnaire["cooling"].prix}}$</li></ul>
         <br>
-        <li>{{ram}}</li>
+        <li>{{dictionnaire["ram"].description}}</li>
         <br>
-        <li>{{power}}</li>
+        <li>{{dictionnaire["power"].description}}</li>
         <br>
-        <li>{{keyboard}}</li>
+        <li>{{dictionnaire["keyboard"].description}}</li>
         <br>
-        <li>{{mouse}}</li>
+        <li>{{dictionnaire["mouse"].description}}</li>
         <br>
-        <li>{{monitor}}</li>
+        <li>{{dictionnaire["monitor"].description}}</li>
     </ul>
     <h3>Sous-total: {{sous_total}}$</h3>
     <h3>Taxes: {{taxes}}$</h3>

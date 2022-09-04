@@ -47,19 +47,26 @@ class Article:
 
 
 class Ordinateur:
-    def __init__(self,composantes):  # prend le tableau des valeur récupéré dans la page construire
+    def __init__(self, composantes):  # prend le tableau des valeur récupéré dans la page construire
         self.composantes=composantes
         self.montant_sous_total = self.sous_total()
         self.montant_taxe = self.taxes()
         self.montant_total = self.total()
 
+    # def sous_total(self):
+    #     initialisation = 0
+    #     for i in self.composantes:
+    #         initialisation += i
+    #     self.montant_sous_total=initialisation
+    #     return self.montant_sous_total
+
     def sous_total(self):
+
         initialisation = 0
-        for i in self.composantes:
-            initialisation += i
+        for cle in self.composantes:
+            initialisation += self.composantes[cle].prix
         self.montant_sous_total=initialisation
         return self.montant_sous_total
-
 
 
     def taxes(self):
