@@ -134,7 +134,7 @@ def calculerLivraison(codepostal):
     elif (not codepostal[0] in texte)or(not codepostal[2].isalpha())or(not codepostal[4] in texte)or\
         (not codepostal[1].isnumeric())or(not codepostal[3].isnumeric())or(not codepostal[5].isnumeric()):
 
-        return False
+        return True
 
     elif (codepostal[0] in "GHJ"):
         return 12.99;
