@@ -23,35 +23,26 @@
         <h1>OdrinaLand</h1>
         <p>La référence en matière d'ordinateurs</p>
     </header>
+
+     </div>
+    <div class="alerte">
+       {% if err == True %}
+           <h1> {{message_erreur}} </h1>
+       {% endif %}
+    </div>
     <br><br>
     <h3>Votre ordinateur</h3>
     <br>
+
+    {% for cle in var_form_construire %}
     <ul>
-        <li>{{dictionnaire["case"].description}}</li>
-        <ul><li>{{dictionnaire["case"].prix}}$</li></ul>
+        <li>{{var_form_construire[cle].description}}</li>
+        <ul><li>{{var_form_construire[cle].prix}}$</li></ul>
         <br>
-        <li>{{dictionnaire["motherboard"].description}}</li>
-        <ul><li>{{dictionnaire["motherboard"].prix}}$</li></ul>
-        <br>
-        <li>{{dictionnaire["cpu"].description}}</li>
-        <ul><li>{{dictionnaire["cpu"].prix}}$</li></ul>
-        <br>
-        <li>{{dictionnaire["storage"].description}}</li>
-        <ul><li>{{dictionnaire["storage"].prix}}$</li></ul>
-        <br>
-        <li>{{dictionnaire["cooling"].description}}</li>
-        <ul><li>{{dictionnaire["cooling"].prix}}$</li></ul>
-        <br>
-        <li>{{dictionnaire["ram"].description}}</li>
-        <br>
-        <li>{{dictionnaire["power"].description}}</li>
-        <br>
-        <li>{{dictionnaire["keyboard"].description}}</li>
-        <br>
-        <li>{{dictionnaire["mouse"].description}}</li>
-        <br>
-        <li>{{dictionnaire["monitor"].description}}</li>
-    </ul>
+     </ul>
+    {% endfor %}
+
+
     <h3>Sous-total: {{sous_total}}$</h3>
     <h3>Taxes: {{taxes}}$</h3>
     {%if livraison == 0 %}

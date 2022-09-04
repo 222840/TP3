@@ -77,39 +77,48 @@ def glossaire2(nb):
 def afficher_ordinateur():
     # TODO try catch
 
-    try:
+    #try:
         var_form_construire = {} #dicionnaire de variables récupérées dans la page : construire.html
         numero_index=[]
+
+
+        err = True
         for i,cle in enumerate(choix_composantes):
             numero_index.append(choix_composantes[cle])
-            numero_index[i]=request.form[cle]
-            print(numero_index[i])
-            var_form_construire[cle] = choix_composantes[cle][int(numero_index[i][0]) - 1]
-            print((var_form_construire[cle].prix))
+            try :
+                numero_index[i]=request.form[cle]
+                var_form_construire[cle] = choix_composantes[cle][int(numero_index[i][0])]
+                err = False
+
+            except :
+
+
+                    message_erreur = "Votre panier est vide "
+
+
 
         codepostal = request.form['codepostal']
-
-        livraison = 0  # initialisation du prix livraison
         livraison = calculerLivraison(codepostal)
-
-
-
-        # reste a faire les boucle dans les template
-
-
         panier=Ordinateur(var_form_construire)
 
         sous_total = round(panier.sous_total(),2)
         taxes = round(panier.taxes(),2)
         total = round(panier.total(),2)
 
-        return render_template("afficher-ordinateur.html",dictionnaire=var_form_construire,annee=annee,
-                           sous_total=round(sous_total,2),taxes=round(taxes,2),total=round(total,2)+livraison,livraison=round(livraison,2))
 
-    except:
-        erreur=1
-        message_erreur="Erreur!. Veuillez faire le choix de toutes les composantes et entrez un code postal valide"
-        return render_template("construire.html", annee=annee, choix_composantes=choix_composantes, glossaire=glossaire,err=1, message=message_erreur)
+        if livraison == False:
+            err = True
+            message_erreur ="Code postale invalide "
+            return render_template("construire.html", annee=annee, choix_composantes=choix_composantes,
+                                   glossaire=glossaire, err=err, message_erreur=message_erreur)
+
+        return render_template("afficher-ordinateur.html",var_form_construire=var_form_construire,annee=annee,
+                           sous_total=round(sous_total,2),taxes=round(taxes,2),total=round(total,2)+livraison,livraison=round(livraison,2),message_erreur=message_erreur,err=err)
+
+    # except:
+    #     erreur=1
+    #     message_erreur="Erreur!. Veuillez faire le choix de toutes les composantes et entrez un code postal valide"
+    #     return render_template("construire.html", annee=annee, choix_composantes=choix_composantes, glossaire=glossaire,err=1, message=message_erreur)
 
 
 
@@ -119,10 +128,13 @@ def calculerLivraison(codepostal):
     codepostal=codepostal.upper()
     print(codepostal)
     if (len(codepostal) !=6):
-        return 0;
+        return False
+
     elif (not codepostal[0] in texte)or(not codepostal[2].isalpha())or(not codepostal[4] in texte)or\
         (not codepostal[1].isnumeric())or(not codepostal[3].isnumeric())or(not codepostal[5].isnumeric()):
-        return 0;
+
+        return False
+
     elif (codepostal[0] in "GHJ"):
         return 12.99;
     else:

@@ -31,8 +31,8 @@
     <p>Cette page sert d'assistant pour choisir les composantes de votre futur ordinateur</p>
     </div>
     <div class="alerte">
-       {% if err == 1 %}
-           <p> {{message}} </p>
+       {% if err == True %}
+           <h1> {{message_erreur}} </h1>
        {% endif %}
     </div>
 
