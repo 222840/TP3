@@ -52,8 +52,9 @@ def afficher_ordinateur():
 
 
     codepostal = request.form['codepostal']
-
     panier=Ordinateur(var_form_construire)
+
+
     livraison = panier.calculer_livraison(codepostal)
 
     if livraison == True:

@@ -47,38 +47,29 @@ class Article:
 class Ordinateur:
     def __init__(self, composantes):  # prend le tableau des valeur récupéré dans la page construire
         self.composantes=composantes
-        self.montant_sous_total = self.sous_total()
-        self.montant_taxe = self.taxes()
-        self.montant_total = self.total()
 
-    # def sous_total(self):
-    #     initialisation = 0
-    #     for i in self.composantes:
-    #         initialisation += i
-    #     self.montant_sous_total=initialisation
-    #     return self.montant_sous_total
 
     def sous_total(self):
+        montant_sous_total = 0
 
-        initialisation = 0
-        for cle in self.composantes:
-            initialisation += self.composantes[cle].prix
-        self.montant_sous_total=initialisation
-        return self.montant_sous_total
+        for composante in self.composantes:
+                montant_sous_total += float(self.composantes[composante].prix)
+        return montant_sous_total
 
 
     def taxes(self):
+        montant_taxe= self.sous_total()* 0.15
 
-        self.montant_taxe= self.montant_sous_total* 0.15
+        return montant_taxe
 
-        return self.montant_taxe
 
 
     def total(self):
-        self.montant_total = (self.montant_sous_total) + self.montant_taxe
-
+        self.montant_total = self.sous_total() + self.taxes()
 
         return self.montant_total
+
+
 
     def calculer_livraison(self,codepostal):
         codepostal = codepostal.replace(" ", "")  # pour éliminer les espaces
@@ -108,7 +99,7 @@ class Composante():
     def __init__(self, description, prix, lien):
         self.description = description
         self.lien = lien
-        self.prix = prix
+        self.prix = "{:.2f}".format(prix)
 
 
 # ---------------------------------------------------
