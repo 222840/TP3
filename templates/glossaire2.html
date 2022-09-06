@@ -31,11 +31,17 @@
         <br>
         <h3>Mots reliés</h3>
 
-        {%for i in glossaire[nb].termes_relies()%}
-            <li><a href="/glossaire/{{i}}">{{i}}</a></li>
+
+        {%for i in range (glossaire|length)%}
+            {% for y in glossaire[nb].termes_relies()%}
+                {% if y.terme == glossaire[i].terme %}
+                <li><a href="/glossaire/{{i}}">{{y.terme.capitalize()}}</a></li>
+                <br>
+                {% endif %}
+            {% endfor %}
         {% endfor %}
         <br>
-        <a href="/glossaire">Revenir au Glossaire</a>
+        <h3><a href="/glossaire">Revenir au Glossaire</a></h3>
 
 
 

@@ -8,17 +8,15 @@ class Definition:
         self.source = source
 
     def termes_relies(self):
-        # TODO : passer à travers tous les termes définis dans le
-        # tableau `glossaire` et retourner un tableau de termes qui
-        # sont présents dans le texte
 
         tab_termes = []
         for definition in glossaire:
-            if definition.terme in self.texte:
-                tab_termes.append(definition.terme)
+            if definition.terme.lower() in self.texte.lower() :
+                if  self.terme !=  definition.terme:
 
-
+                    tab_termes.append(definition)
         return tab_termes
+
 
 
 class Article:
@@ -81,6 +79,28 @@ class Ordinateur:
 
 
         return self.montant_total
+
+    def calculer_livraison(self,codepostal):
+        codepostal = codepostal.replace(" ", "")  # pour éliminer les espaces
+        texte = 'ABCEGHJKLMNPRSTVXY'
+        codepostal = codepostal.upper()
+        print(codepostal)
+
+        if (len(codepostal) == 0):
+            return 0
+
+        elif (len(codepostal) != 6):
+            return True
+
+        elif (not codepostal[0] in texte) or (not codepostal[2].isalpha()) or (not codepostal[4].isalpha()) or \
+                (not codepostal[1].isnumeric()) or (not codepostal[3].isnumeric()) or (not codepostal[5].isnumeric()):
+
+            return True
+
+        elif (codepostal[0] in "GHJ"):
+            return 12.99;
+        else:
+            return 20.99;
 
 
 

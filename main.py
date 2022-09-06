@@ -8,7 +8,7 @@ annee=maintenent.year
 
 app = Flask(__name__)
 
-if Article.numero <= 0:articles = [Article("Aucun article pour le moment","","","")]
+
 
 @app.route("/")
 def index():
@@ -20,6 +20,8 @@ def index():
 
     return render_template("index.html",annee=annee,articles=articles,nombre_articles=nombre_articles)
 
+
+
 @app.route("/construire/")
 def construire():
     # TODO try catch
@@ -28,6 +30,57 @@ def construire():
 
     return render_template("construire.html",annee=annee,choix_composantes=choix_composantes ,glossaire=glossaire,err=0, message=" " )
 
+
+
+
+@app.route("/afficher-ordinateur", methods=["POST"])
+def afficher_ordinateur():
+    var_form_construire = {} #dicionnaire de variables récupérées dans la page : construire.html
+    message_erreur =""
+    erreur = True
+
+    numero_index = []
+    for i,cle in enumerate(choix_composantes):
+        numero_index.append(choix_composantes[cle])
+        try :
+            numero_index[i]=request.form[cle]
+            var_form_construire[cle] = choix_composantes[cle][int(numero_index[i][0])]
+            erreur = False
+
+        except :
+                message_erreur = "Votre panier est vide "
+
+
+    codepostal = request.form['codepostal']
+
+    panier=Ordinateur(var_form_construire)
+    livraison = panier.calculer_livraison(codepostal)
+
+    if livraison == True:
+        erreur=True
+        message_erreur = "Code postale invalide "
+
+    if erreur ==True :
+        return render_template("construire.html", annee=annee, choix_composantes=choix_composantes,
+                               glossaire=glossaire, err=erreur, message_erreur=message_erreur)
+    if len(var_form_construire) != 10:
+        erreur=True
+
+    sous_total = "{:.2f}".format(panier.sous_total())
+    taxes = "{:.2f}".format(panier.taxes())
+    total = "{:.2f}".format(panier.total()+(livraison))
+
+
+
+    return render_template("afficher-ordinateur.html",var_form_construire=var_form_construire,annee=annee,
+                       sous_total=sous_total,taxes=taxes,total=total,livraison=livraison,err=erreur)
+
+
+
+
+
+
+if Article.numero <= 0:articles = [Article("Aucun article pour le moment","","","")]
 @app.route("/blog/<nb>")
 def blog(nb):
     #TODO try catch
@@ -44,6 +97,9 @@ def blog(nb):
         page_active = p.page(1)
 
     return render_template("blog.html",p=p,articles=articles,page_active=page_active,annee=annee,)
+
+
+
 
 @app.route("/article/<int:nb>")
 def article(nb):
@@ -65,87 +121,13 @@ def glossair():
 @app.route("/glossaire/<int:nb>")
 
 def glossaire2(nb):
-
-    return render_template("glossaire2.html", glossaire=glossaire, nb=nb, annee=annee)
-
-    return render_template("glossaire.html",annee=annee)
-
-
-
-
-@app.route("/afficher-ordinateur", methods=["POST"])
-def afficher_ordinateur():
     # TODO try catch
+    try:
+        return render_template("glossaire2.html", glossaire=glossaire, nb=nb, annee=annee)
 
+    except :
 
-    var_form_construire = {} #dicionnaire de variables récupérées dans la page : construire.html
-    numero_index=[]
-
-    message_erreur =""
-    err = True
-    for i,cle in enumerate(choix_composantes):
-        numero_index.append(choix_composantes[cle])
-        try :
-            numero_index[i]=request.form[cle]
-            var_form_construire[cle] = choix_composantes[cle][int(numero_index[i][0])]
-            err = False
-
-        except :
-                message_erreur = "Votre panier est vide "
-
-
-
-    codepostal = request.form['codepostal']
-    livraison = calculerLivraison(codepostal)
-    panier=Ordinateur(var_form_construire)
-
-
-
-
-    if livraison == True:
-        err=True
-        message_erreur = "Code postale invalide "
-
-    if err ==True :
-        return render_template("construire.html", annee=annee, choix_composantes=choix_composantes,
-                               glossaire=glossaire, err=err, message_erreur=message_erreur)
-    if len(var_form_construire) != 10:
-        err=True
-
-    sous_total = "{:.2f}".format(panier.sous_total())
-    taxes = "{:.2f}".format(panier.taxes())
-    total = "{:.2f}".format(panier.total()+(livraison))
-
-
-
-    return render_template("afficher-ordinateur.html",var_form_construire=var_form_construire,annee=annee,
-                       sous_total=sous_total,taxes=taxes,total=total,livraison=livraison,err=err)
-
-
-
-def calculerLivraison(codepostal):
-    codepostal = codepostal.replace(" ","")  # pour éliminer les espaces
-    texte='ABCEGHJKLMNPRSTVXY'
-    codepostal=codepostal.upper()
-    print(codepostal)
-
-    if (len(codepostal)==0):
-        return 0
-
-    elif (len(codepostal) !=6 ):
-        return True
-
-    elif (not codepostal[0] in texte)or(not codepostal[2].isalpha())or(not codepostal[4].isalpha())or\
-        (not codepostal[1].isnumeric())or(not codepostal[3].isnumeric())or(not codepostal[5].isnumeric()):
-
-        return True
-
-    elif (codepostal[0] in "GHJ"):
-        return 12.99;
-    else:
-        return 20.99;
-
-
+        return render_template("glossaire.html",annee=annee,glossaire=glossaire)
 
 
 
