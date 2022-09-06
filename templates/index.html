@@ -31,10 +31,11 @@
     </header>
 
     <section>
+        <article class="page-acceuil">
 
         <h1>Première visite sur le site? </h1>
         <p>Faite un tour sur notre <a href= "/construire/">outil d'aide à monter un ordinateur</a></p>
-
+        </article>
     <h1>Sur le Blog...</h1>
 
     </section>
@@ -55,8 +56,9 @@
 
                 <p>{{articles[i].tableau_paragraphes()[y]}}</p>
             {% endif %}
-        {% endfor %}
 
+        {% endfor %}
+        <a href= "/article/{{i+1}}">lire l'article </a>
     </article>
     {% endfor %}
     </section>

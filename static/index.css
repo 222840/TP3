@@ -68,6 +68,8 @@ section {
 
 }
 
+
+
 aside{
     background: #a4aabb;
     border: groove 1em #123c7085;
@@ -103,16 +105,56 @@ p {
 }
 
 article{
-    background-color:pink;
-    margin: 30px;
+
+    margin-top:20px;
+    margin-left: 10%;
+    margin-right:10%;
     padding: .3rem;
+
+}
+.blog-acceuil{
     background-color: #eee;
     font: 1rem 'Fira Sans', sans-serif;
-    border: groove 1em #123c7085;
-    border-radius: 25% 10%;
+    border: groove 1em #d1b6b6;  /* https://developer.mozilla.org/fr/docs/Web/CSS/border-radius */
+    border-radius: 2em;
+
 }
 
+.page-acceuil{
+     border: none;
+    border-radius: 40px 10px;
+    background: #999166;
+    margin-top:10px;
+    margin-left:20%;
+    margin-right:20%;
 
+
+}
+
+.page-blog{
+    border: none;
+  border-radius: 40px 10px;
+  background-color:#8d8889;
+
+
+}
+.page-article{
+     border: none;
+    border-radius: 40px 10px;
+    background: #889aa1;
+    margin:20px;
+    margin-left:20%;
+    margin-right:20%;
+}
+.titre-article{
+         border: none;
+    border-radius: 40px 10px;
+    background: #8b87a9;
+    margin-top:10px;
+    margin-left:20%;
+    margin-right:20%;
+
+}
 
 footer{
     background-color:#7aa4e9;
@@ -121,7 +163,7 @@ footer{
     margin-left: 15%;
     margin-right: 15%;
     margin-bottom:50px;
-    border: groove 1em #123c7085;
+    border: none; /* https://developer.mozilla.org/fr/docs/Web/CSS/border-radius */
     border-radius: 25% 10%;
 
 }
@@ -131,7 +173,7 @@ nav {
     justify-content: center;
     background-color: #fff;
     color: #333;
-    border: groove 1em #123c7085;
+    border: groove 1em #123c7085; /* https://developer.mozilla.org/fr/docs/Web/CSS/border-radius */
     border-radius: 25% 10%;
 }
 
