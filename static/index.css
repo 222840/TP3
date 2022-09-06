@@ -138,6 +138,16 @@ article{
 
 
 }
+.contact{
+     border: none;
+    border-radius: 40px ;
+    background: #87330c8c;
+    margin:20px;
+    margin-left:30%;
+    margin-right:30%;
+
+}
+
 .page-article{
      border: none;
     border-radius: 40px 10px;

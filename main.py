@@ -12,10 +12,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    # TODO try catch
     if  Article.numero < 3:
         nombre_articles = len(articles)
-
     else: nombre_articles = 3
 
     return render_template("index.html",annee=annee,articles=articles,nombre_articles=nombre_articles)
@@ -24,9 +22,6 @@ def index():
 
 @app.route("/construire/")
 def construire():
-    # TODO try catch
-
-
 
     return render_template("construire.html",annee=annee,choix_composantes=choix_composantes ,glossaire=glossaire,err=0, message=" " )
 
@@ -54,7 +49,6 @@ def afficher_ordinateur():
     codepostal = request.form['codepostal']
     panier=Ordinateur(var_form_construire)
 
-
     livraison = panier.calculer_livraison(codepostal)
 
     if livraison == True:
@@ -71,12 +65,8 @@ def afficher_ordinateur():
     taxes = "{:.2f}".format(panier.taxes())
     total = "{:.2f}".format(panier.total()+(livraison))
 
-
-
     return render_template("afficher-ordinateur.html",var_form_construire=var_form_construire,annee=annee,
                        sous_total=sous_total,taxes=taxes,total=total,livraison=livraison,err=erreur)
-
-
 
 
 
@@ -84,7 +74,6 @@ def afficher_ordinateur():
 if Article.numero <= 0:articles = [Article("Aucun article pour le moment","","","")]
 @app.route("/blog/<nb>")
 def blog(nb):
-    #TODO try catch
     tab_contenue=[]
     p=Paginator(articles,3)
 
@@ -104,7 +93,6 @@ def blog(nb):
 
 @app.route("/article/<int:nb>")
 def article(nb):
-    # TODO try catch
     try:
         return render_template("article.html",articles=articles,nb=nb-1,annee=annee)
     except:
@@ -114,15 +102,12 @@ def article(nb):
 
 @app.route("/glossaire/")
 def glossair():
-    # TODO try catch
-
     return render_template("glossaire.html",annee=annee,glossaire=glossaire)
 
 
 @app.route("/glossaire/<int:nb>")
 
 def glossaire2(nb):
-    # TODO try catch
     try:
         return render_template("glossaire2.html", glossaire=glossaire, nb=nb, annee=annee)
 
@@ -135,7 +120,6 @@ def glossaire2(nb):
 
 @app.route("/contact/")
 def contact():
-    # TODO try catch
 
     return render_template("contact.html",annee=annee)
 
