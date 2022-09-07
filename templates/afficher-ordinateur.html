@@ -36,6 +36,7 @@
     <br>
 
     {% for cle in var_form_construire %}
+    <ul><h3>{{cle.capitalize()}}</h3></ul><br>
     <ul>
         <li>{{var_form_construire[cle].description}}</li>
         <ul><li>{{var_form_construire[cle].prix}}$</li></ul>

@@ -23,6 +23,19 @@ def index():
 @app.route("/construire/")
 def construire():
 
+    compteur=0
+    for cle in choix_composantes.keys():
+        print(cle,glossaire[compteur].source)
+        compteur += 1
+        for i in range (len(choix_composantes[cle])):
+            print(choix_composantes[cle][i].description,choix_composantes[cle][i].prix)
+
+
+    # for i in range(len(glossaire)):
+    #     print(glossaire[i].terme)
+    #     for y in range (len(choix_composantes[str(glossaire[i].terme)])):
+    #         print(choix_composantes[str(glossaire[i].terme)][y].description)
+
     return render_template("construire.html",annee=annee,choix_composantes=choix_composantes ,glossaire=glossaire,err=0, message=" " )
 
 
