@@ -59,7 +59,7 @@
     <ul class="pagination">
         {% if page_active.has_previous() %}
         <li>
-            <a href="/blog/{{ page_precedente }}"><span aria-hidden="true">«</span>
+            <a href="/blog/{{ page_active.previous_page_number() }}"><span aria-hidden="true">«</span>
             <span class="visuallyhidden"></span>
             </a>
         </li>
@@ -80,8 +80,8 @@
         {% endfor %}
 
         {% if page_active.has_next() %}
-        <li><a href="/blog/{{page_suivante}}"><span class="visuallyhidden"></span><span aria-hidden="true">»</span></a></li>
-
+        <li><a href="/blog/{{page_active.next_page_number()}}"><span class="visuallyhidden"></span><span aria-hidden="true">»</span></a></li>
+        
         {% endif %}
 
 

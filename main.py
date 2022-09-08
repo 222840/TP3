@@ -98,7 +98,9 @@ def blog(nb):
 
     except (InvalidPage):
         page_active = p.page(1)
-
+    #print(page_active.next_page_number())
+    #print(page_active.previous_page_number())
+    #print(page_active.has_previous())
     return render_template("blog.html",p=p,articles=articles,page_active=page_active,annee=annee,)
 
 
