@@ -8,13 +8,13 @@ class Definition:
         self.source = source
 
     def termes_relies(self):
-
         tab_termes = []
+
         for definition in glossaire:
             if definition.terme.lower() in self.texte.lower() :
                 if  self.terme !=  definition.terme:
-
                     tab_termes.append(definition)
+
         return tab_termes
 
 
@@ -27,31 +27,35 @@ class Article:
         self.date = date
         self.texte = texte
         self.image = image
-
         self.numero = Article.numero
         Article.numero += 1
+
 
 
     def tableau_paragraphes(self):
         return self.texte.split('\n\n')
 
+
+    def nb_mots(self):
+        nb_mot = len(self.texte.split())
+        return round (nb_mot)
+
+
     def temps_lecture(self):
         RYTHME_LECTURE = 200 / 60
-        nb_mots = len(self.texte.split())
-        temps_lecture = round(nb_mots / RYTHME_LECTURE)
-        # TODO
-
+        temps_lecture = int( self.nb_mots() / RYTHME_LECTURE)
         return f" Temps de lecture : {temps_lecture} secondes"
 
 
+
+
 class Ordinateur:
-    def __init__(self, composantes):  # prend le tableau des valeur récupéré dans la page construire
+    def __init__(self, composantes):
         self.composantes=composantes
 
 
     def sous_total(self):
         montant_sous_total = 0
-
         for composante in self.composantes:
                 montant_sous_total += float(self.composantes[composante].prix)
         return montant_sous_total
@@ -59,14 +63,12 @@ class Ordinateur:
 
     def taxes(self):
         montant_taxe= self.sous_total()* 0.15
-
         return montant_taxe
 
 
 
     def total(self):
         self.montant_total = self.sous_total() + self.taxes()
-
         return self.montant_total
 
 
