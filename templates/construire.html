@@ -37,14 +37,14 @@
     </div>
 
     <form action="/afficher-ordinateur" method="post">
-    <div>   {% set cnt = [0] %}
+    <div>
 
             {% for cle in choix_composantes.keys() %}
-                {% if cnt == [9] %}
-                {% set cnt = [12] %}{% endif %}
-
-            <h3>{{cle.capitalize()}}<small> <a href="/glossaire/{{cnt[0]}}">(description)</a></small>
-                {% if cnt.append(cnt.pop() + 1) %}{% endif %}
+                {% for i in glossaire %}
+                    {% if i.terme == cle %}
+                    <h3>{{cle.capitalize()}}<small> <a href="/glossaire/{{glossaire.index(i)}}">(description)</a></small>
+                    {% endif %}
+                {% endfor %}
 
             </h3>
 
@@ -55,7 +55,7 @@
                          <a href="{{choix_composantes[cle][i].lien}}">[voir]</a>
                          </label>
                          </br>
-                {% set cnt = cnt + [1] %}
+
                 {% endfor %}
 
         {% endfor %}
