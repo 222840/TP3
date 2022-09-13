@@ -187,9 +187,15 @@ nav {
     border-radius: 25% 10%;
 }
 
+nav2 {
+    display: flex;
+    justify-content: center;
+    color: #333;
+
+}
+
 .pagination {
     list-style: none;
-    margin: 0;
     padding: 0;
     display: flex;
 }
@@ -208,22 +214,11 @@ a.isDisabled {
 
 }
 
-a.menu-acceuil{
-    pointer-events: none;
-    background-color: #333;
-}
 
-.pagination a[aria-current="page"] {
-    background-color: #333;
-    color: #fff;
-    background-color: #8080804d
-
-}
 .pagination a {
     display: block;
     padding: 0.5em 1em;
     border: 1px solid #999;
-    border-radius: 0.2em;
     text-decoration: none;
 }
 
