@@ -12,7 +12,7 @@
 <body>
    <div class="topnav">
         <a href= "/"><i class="fa fa-fw fa-home"></i>Acceuil</a>
-        <a href="/construire/">Construire un ordinateu</a>
+        <a href="/construire/">Construire un ordinateur</a>
         <a href="/blog/1">Blog</a>
         <a class="active" href="/glossaire/">Glossaire</a>
         <a href="/contact/"><i class="fa fa-fw fa-envelope"></i>Contact</a>
@@ -31,17 +31,11 @@
         <br>
         <h3>Mots reliés</h3>
 
-
-        {%for i in range (glossaire|length)%}
-            {% for y in glossaire[nb].termes_relies()%}
-                {% if y.terme == glossaire[i].terme %}
-                <li><a href="/glossaire/{{i}}">{{y.terme.capitalize()}}</a></li>
-                <br>
-                {% endif %}
-            {% endfor %}
+        {%for i in glossaire[nb].termes_relies()%}
+            <li><a href="/glossaire/{{i}}">{{i}}</a></li>
         {% endfor %}
         <br>
-        <h3><a href="/glossaire">Revenir au Glossaire</a></h3>
+        <a href="/glossaire">Revenir au Glossaire</a>
 
 
 
