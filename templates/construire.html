@@ -7,11 +7,10 @@
     <link href="/static/index.css" rel="stylesheet" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Construire-Ordinateur</title>
+    <link rel="icon" type="image/x-icon" href="/static/penguin.png">
 </head>
 
 <body>
-
-
 
     <div class="topnav">
         <a> <span class="menu-acceuil">OdrinaLand</span></a>
@@ -21,6 +20,7 @@
         <a href= "/glossaire/">Glossaire</a>
         <a href="/contact/"><i class="fa fa-fw fa-envelope"></i>Contact</a>
     </div>
+
     <header>
         <h1>OrdinaLand</h1>
         <p>La référence en matière d'ordinateurs</p>
@@ -38,16 +38,13 @@
 
     <form action="/afficher-ordinateur" method="post">
     <div>
-
             {% for cle in choix_composantes.keys() %}
                 {% for i in glossaire %}
                     {% if i.terme == cle %}
                     <h3>{{cle.capitalize()}}<small> <a href="/glossaire/{{glossaire.index(i)}}">(description)</a></small>
                     {% endif %}
                 {% endfor %}
-
             </h3>
-
                     {% for i in range(choix_composantes[cle]|length) %}
                         <br>
                          <input type="radio" id={{i}} name="{{cle}}" value={{i}}>
@@ -55,9 +52,7 @@
                          <a href="{{choix_composantes[cle][i].lien}}">[voir]</a>
                          </label>
                          </br>
-
                 {% endfor %}
-
         {% endfor %}
     </div>
 

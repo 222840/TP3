@@ -35,7 +35,7 @@ def construire():
 
 
 
-#Chemin pour accéder à la page résultat de la construction d'un ordinateur
+#Chemin pour le panier des achats
 @app.route("/afficher-ordinateur", methods=["POST"])
 def afficher_ordinateur():
     dic_choix_form_construire_ordinateur = {}
@@ -62,7 +62,7 @@ def afficher_ordinateur():
 
 
 
-    #récupèrer le code postal à partir de la forme puis calculer la livraison
+    #récupère le code postal à partir de la forme puis calcule la livraison
     codepostal = request.form['codepostal']
     livraison = panier_du_client.calculer_livraison(codepostal)
 

@@ -17,6 +17,7 @@
         <a class="active" href="/glossaire/">Glossaire</a>
         <a href="/contact/"><i class="fa fa-fw fa-envelope"></i>Contact</a>
     </div>
+
     <header>
         <h1>OrdinaLand</h1>
         <p>La référence en matière d'ordinateurs</p>
@@ -30,8 +31,6 @@
         <p>Source:<a href="{{glossaire[nb].source}}">{{glossaire[nb].source}}</a> </p>
         <br>
         <h3>Mots reliés</h3>
-
-
         {%for i in range (glossaire|length)%}
             {% for y in glossaire[nb].termes_relies()%}
                 {% if y.terme == glossaire[i].terme %}
@@ -42,12 +41,7 @@
         {% endfor %}
         <br>
         <h3><a href="/glossaire">Revenir au Glossaire</a></h3>
-
-
-
     </div>
-
-
 
     <footer>{{annee}}-Ordinaland</footer>
 </body>
