@@ -29,19 +29,28 @@
 
     </header>
 
+
     <section>
+
+
 
         {% for i in page_active : %}
             <article class="page-blog">
+
             <h1>{{i.titre}}</h1>
             <p>{{i.tableau_paragraphes()[0]}}</p>
+
             {% if i.tableau_paragraphes()|length >= 2 %}
                 {{i.tableau_paragraphes()[1]}}
             {%endif%}
-            <br>
+
+                <br>
             <a href= "/article/{{articles.index(i)+1}}">lire l'article </a>
             </article>
+
         {% endfor %}
+
+
 
     </section>
 
@@ -54,24 +63,32 @@
             <span class="visuallyhidden"></span>
             </a>
         </li>
+
         {% endif %}
 
         {% for i in range (page_active.paginator.num_pages): %}
-            {% if page_active.number == i+1 %}
-            <li>
+        {% if page_active.number == i+1 %}
+        <li>
             <a> <span class="isDisabled">{{page_active.number}} </span></a>
-            </li>
-            {% else %}
-            <span class="visuallyhidden"></span></a></li>
-            <li><a href=/blog/{{i+1}}><span class="visuallyhidden"> </span>{{i+1}}</a></li>
-            {% endif %}
+
+        </li>
+        {% else %}
+
+        <span class="visuallyhidden"></span></a></li>
+        <li><a href=/blog/{{i+1}}><span class="visuallyhidden"> </span>{{i+1}}</a></li>
+        {% endif %}
         {% endfor %}
 
         {% if page_active.has_next() %}
-            <li><a href="/blog/{{page_active.next_page_number()}}"><span class="visuallyhidden"></span><span aria-hidden="true">»</span></a></li>
+        <li><a href="/blog/{{page_active.next_page_number()}}"><span class="visuallyhidden"></span><span aria-hidden="true">»</span></a></li>
+
         {% endif %}
+
+
     </ul>
 </nav2>
+
+
    <footer>{{annee}}-Ordinaland</footer>
 </body>
 </html>

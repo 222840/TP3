@@ -31,10 +31,10 @@
             <h1> Vous avez {{var_form_construire|length}} article dans votre panier </h1>
        {% endif %}
     </div>
+    <br><br>
+    <h3>Votre ordinateur</h3>
     <br>
-    <br>
-    <h3>Votre Panier</h3>
-    <br>
+
     {% for cle in var_form_construire %}
     <ul><h3>{{cle.capitalize()}}</h3></ul><br>
     <ul>
@@ -44,9 +44,9 @@
      </ul>
     {% endfor %}
 
+
     <h3>Sous-total: {{sous_total}}$</h3>
     <h3>Taxes: {{taxes}}$</h3>
-
     {%if livraison == 0 %}
         <h3>Ramassage en magasin</h3>
        <br>

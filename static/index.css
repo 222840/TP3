@@ -1,6 +1,6 @@
 header {
     /* La hauteur est de 300px */
-    height: 50px;
+    height: 100px;
     min-width: 50%;
     max-width: 90%;
     font-size:50px;
@@ -14,7 +14,8 @@ header {
 
 body {
       margin: 10px;
-      min-width:1000px;
+      min-width:1500px;
+      margin-left:50px;
       font-family: Arial, Helvetica, sans-serif;
       background-color: #cccccc;
     }
@@ -158,7 +159,7 @@ article{
 .titre-article{
          border: none;
     border-radius: 40px 10px;
-    background: #b5b3bf;
+    background: #8b87a9;
     margin-top:10px;
     margin-left:20%;
     margin-right:20%;
