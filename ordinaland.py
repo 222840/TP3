@@ -77,7 +77,6 @@ class Ordinateur:
         codepostal = codepostal.replace(" ", "")  # pour éliminer les espaces
         texte = 'ABCEGHJKLMNPRSTVXY'
         codepostal = codepostal.upper()
-        print(codepostal)
 
         if (len(codepostal) == 0):
             return 0
@@ -450,3 +449,14 @@ choix_composantes = {
             459.99, 'https://www.newegg.ca/p/N82E16824012046'),
     ]
 }
+
+# test unitaire pour la classe Ordinateur
+def test_ordinateur():
+    dic_test_ordinateur = {}
+    for cle in choix_composantes:
+        dic_test_ordinateur[cle] = choix_composantes[cle][0]
+    panier_test =  Ordinateur(dic_test_ordinateur)
+    codepostal="j9l 3G7"
+    livraison = panier_test.calculer_livraison(codepostal)
+    assert ("{:.2f}".format(panier_test.total()+(livraison))) == str (1357.23)
+test_ordinateur()
