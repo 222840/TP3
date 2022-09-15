@@ -1,3 +1,4 @@
+#TP réalisé par Martin Bisson-Godbout et Siham Zaoui
 from ordinaland import *
 from flask import Flask,request,render_template
 from django.core.paginator import Paginator,InvalidPage
@@ -7,6 +8,7 @@ maintenent=datetime.datetime.now()
 annee=maintenent.year
 
 app = Flask(__name__)
+
 
 
 
@@ -22,26 +24,27 @@ def index():
 
 
 
+
+#Chemin pour aller à la page construire un ordinateur
 @app.route("/construire/")
 def construire():
-    compteur=0
 
-    for cle in choix_composantes.keys():
-        compteur += 1
-        for i in range (len(choix_composantes[cle])):
-            print(choix_composantes[cle][i].description,choix_composantes[cle][i].prix)
-
-    return render_template("construire.html",annee=annee,choix_composantes=choix_composantes ,glossaire=glossaire,err=0, message=" " )
+    return render_template("construire.html",annee=annee,choix_composantes=choix_composantes
+                           ,glossaire=glossaire,err=0, message=" " )
 
 
 
 
+#Chemin pour accéder à la page résultat de la construction d'un ordinateur
 @app.route("/afficher-ordinateur", methods=["POST"])
 def afficher_ordinateur():
     dic_choix_form_construire_ordinateur = {}
     message_erreur =""
     erreur = True
 
+
+    #Récupérer les choix de l'utilisateur et les mettrent dans un dictionnaire,
+    # s'il y'a une erreur le message panier vide est affiché
     for i,cle in enumerate(choix_composantes):
         try :
             choix_du_client= request.form[cle]
@@ -51,10 +54,15 @@ def afficher_ordinateur():
         except :
                 message_erreur = "Votre panier est vide "
 
+
+
+
+    #Panier_du_client est un objet de classe Ordinateur qui va englober les choix du client
     panier_du_client=Ordinateur(dic_choix_form_construire_ordinateur)
 
 
 
+    #récupèrer le code postal à partir de la forme puis calculer la livraison
     codepostal = request.form['codepostal']
     livraison = panier_du_client.calculer_livraison(codepostal)
 
@@ -108,6 +116,7 @@ def article(nb):
 
 
 
+#Chemin pour la page principal de glossaire
 @app.route("/glossaire/")
 def glossair():
     return render_template("glossaire.html",annee=annee,glossaire=glossaire)
@@ -115,7 +124,9 @@ def glossair():
 
 
 
+#Chemin pour les différentes composantes du glossaire
 @app.route("/glossaire/<int:nb>")
+#glossaire2.html est la 2ème page web pour les différentes composantes du glossaire
 def glossaire2(nb):
     try:
         return render_template("glossaire2.html", glossaire=glossaire, nb=nb, annee=annee)
@@ -125,6 +136,7 @@ def glossaire2(nb):
 
 
 
+#Chemin pour la page contact
 @app.route("/contact/")
 def contact():
     return render_template("contact.html",annee=annee)
