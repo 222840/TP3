@@ -1,6 +1,6 @@
 header {
     /* La hauteur est de 300px */
-    height: 100px;
+    height: 50px;
     min-width: 50%;
     max-width: 90%;
     font-size:50px;
@@ -14,8 +14,7 @@ header {
 
 body {
       margin: 10px;
-      min-width:1500px;
-      margin-left:50px;
+      min-width:1000px;
       font-family: Arial, Helvetica, sans-serif;
       background-color: #cccccc;
     }
@@ -27,7 +26,7 @@ body {
       border-radius: 30px;
 
     }
-    
+
     .topnav a {
       float: left;
       color: #f2f2f2;
@@ -36,12 +35,12 @@ body {
       text-decoration: none;
       font-size: 17px;
     }
-    
+
     .topnav a:hover {
       background-color: #ddd;
       color: black;
     }
-    
+
     .topnav a.active {
       background-color: #1e38d2;
       color: white;
@@ -59,7 +58,7 @@ font-size: 2em
 }
 
 div {
-    margin-left:50px;
+    margin:100px;
 }
 
 
@@ -230,7 +229,9 @@ li {
 }
 
 .alerte{
-    background-color: yellow;
+    border: none;
+    border-radius: 40px 40px;
+    background-color: #ff8100;
     text-size:40px;
     text-align: center;
     width:80%;

@@ -9,6 +9,8 @@ annee=maintenent.year
 
 app = Flask(__name__)
 
+#test unitaire de la classe Ordinateur
+test_ordinateur()
 
 
 

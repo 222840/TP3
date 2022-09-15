@@ -459,4 +459,4 @@ def test_ordinateur():
     codepostal="j9l 3G7"
     livraison = panier_test.calculer_livraison(codepostal)
     assert ("{:.2f}".format(panier_test.total()+(livraison))) == str (1357.23)
-test_ordinateur()
+
