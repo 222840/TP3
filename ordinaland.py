@@ -450,13 +450,28 @@ choix_composantes = {
     ]
 }
 
-# test unitaire pour la classe Ordinateur
+# tests unitaires pour la classe Ordinateur
 def test_ordinateur():
     dic_test_ordinateur = {}
     for cle in choix_composantes:
-        dic_test_ordinateur[cle] = choix_composantes[cle][0]
+        dic_test_ordinateur[cle] = choix_composantes[cle][1]
     panier_test =  Ordinateur(dic_test_ordinateur)
     codepostal="j9l 3G7"
     livraison = panier_test.calculer_livraison(codepostal)
+    assert ("{:.2f}".format(panier_test.total()+(livraison)))== str (2440.87)
+
+    dic_test_ordinateur = {}
+    for cle in choix_composantes:
+        dic_test_ordinateur[cle] = choix_composantes[cle][0]
+    panier_test = Ordinateur(dic_test_ordinateur)
+    codepostal = "j9l 3G7"
+    livraison = panier_test.calculer_livraison(codepostal)
     assert ("{:.2f}".format(panier_test.total()+(livraison))) == str (1357.23)
 
+    assert (panier_test.calculer_livraison("j7c 3g7")) == 12.99
+    assert (panier_test.calculer_livraison(codepostal="a7c 3g7")) == 20.99
+    assert (panier_test.calculer_livraison(codepostal="d7c 3g7")) == True
+    assert (panier_test.calculer_livraison(codepostal="-23")) == True
+    assert (panier_test.calculer_livraison(codepostal="")) == 0
+
+test_ordinateur()

@@ -9,13 +9,17 @@ annee=maintenent.year
 
 app = Flask(__name__)
 
-#test unitaire de la classe Ordinateur
+#tests unitaires de la classe Ordinateur
 test_ordinateur()
 
 
 
 @app.route("/")
 def index():
+    """
+    Chemin page index
+    :return: index.html
+    """
 
     if  Article.numero < 3:
         nombre_articles = len(articles)
@@ -27,9 +31,13 @@ def index():
 
 
 
-#Chemin pour aller à la page construire un ordinateur
+
 @app.route("/construire/")
 def construire():
+    """
+    Chemin pour aller à la page construire un ordinateur
+    :return:construire.html
+    """
 
     return render_template("construire.html",annee=annee,choix_composantes=choix_composantes
                            ,glossaire=glossaire,err=0, message=" " )
@@ -37,9 +45,13 @@ def construire():
 
 
 
-#Chemin pour accéder à la page résultat de la construction d'un ordinateur
+
 @app.route("/afficher-ordinateur", methods=["POST"])
 def afficher_ordinateur():
+    """
+    Chemin pour accéder à la page résultat de la construction d'un ordinateur
+    :return: afficher-ordinateur.html
+    """
     dic_choix_form_construire_ordinateur = {}
     message_erreur =""
     erreur = True
@@ -92,6 +104,11 @@ def afficher_ordinateur():
 if Article.numero <= 0:articles = [Article("Aucun article pour le moment","","","")]
 @app.route("/blog/<nb>")
 def blog(nb):
+    """
+    Chemin page /blog/
+    :param nb: numero de la pagination
+    :return: blog.html
+    """
     p=Paginator(articles,3)
 
     try :
@@ -107,6 +124,11 @@ def blog(nb):
 
 @app.route("/article/<int:nb>")
 def article(nb):
+    """
+    Chemin page /article/
+    :param nb:numéro de l'article
+    :return:article.html
+    """
 
     try:
         return render_template("article.html",articles=articles,nb=nb-1,annee=annee)
@@ -118,18 +140,27 @@ def article(nb):
 
 
 
-#Chemin pour la page principal de glossaire
+
 @app.route("/glossaire/")
 def glossair():
+    """
+    Chemin pour la page principal de glossaire
+    :return: glossaire.html
+    """
     return render_template("glossaire.html",annee=annee,glossaire=glossaire)
 
 
 
 
-#Chemin pour les différentes composantes du glossaire
+
 @app.route("/glossaire/<int:nb>")
-#glossaire2.html est la 2ème page web pour les différentes composantes du glossaire
+#
 def glossaire2(nb):
+    """
+    Chemin pour les différentes composantes du glossaire
+    :param nb: numéro des différentes composantes du glossaire
+    :return: glossaire2.html
+    """
     try:
         return render_template("glossaire2.html", glossaire=glossaire, nb=nb, annee=annee)
     except :
@@ -138,9 +169,13 @@ def glossaire2(nb):
 
 
 
-#Chemin pour la page contact
+
 @app.route("/contact/")
 def contact():
+    """
+    Chemin pour la page contact
+    :return: contact.html
+    """
     return render_template("contact.html",annee=annee)
 
 
