@@ -58,6 +58,9 @@ font-size: 2em
 }
 
 div {
+    margin:10px;
+}
+.contenue{
     margin:100px;
 }
 

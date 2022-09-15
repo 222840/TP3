@@ -37,7 +37,7 @@
     </div>
     <h2>Cette page sert d'assistant pour choisir les composantes de votre futur ordinateur</h2>
     <form action="/afficher-ordinateur" method="post">
-    <div>
+    <div class="contenue">
 
             {% for cle in choix_composantes.keys() %}
                 {% for i in glossaire %}
@@ -59,9 +59,7 @@
                 {% endfor %}
 
         {% endfor %}
-    </div>
 
-    <div>
     <hr>
     <label for="codepostal">Pour ajouter la livraison, entrez votre code postal:</label>
     <input type="text" name="codepostal" id="codepostal" class="form control">
