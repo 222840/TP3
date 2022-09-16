@@ -14,7 +14,6 @@
 
 
     <div class="topnav">
-        <a> <span class="menu-acceuil">OdrinaLand</span></a>
         <a href= "/"><i class="fa fa-fw fa-home"></i>Acceuil</a>
         <a href="/construire/">Construire un ordinateu</a>
         <a href="/blog/1">Blog</a>
@@ -27,8 +26,8 @@
     </header>
     <section>
         <article class="titre-article">
-    <h3>{{articles[nb].titre}}<small>    Publié le {{articles[nb].date}}</small> </h3>
-    <p2>{{articles[nb].temps_lecture()}}</p2>
+    <h3>{{articles[nb].titre}} </h3>
+    <p2>Publié le {{articles[nb].date}}<br><small>{{articles[nb].temps_lecture()}}</small></p2>
         </article>
     </section>
 
