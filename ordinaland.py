@@ -54,21 +54,21 @@ class Ordinateur:
         self.composantes=composantes
 
 
-    def sous_total(self):
+    def calcule_sous_total(self):
         montant_sous_total = 0
         for composante in self.composantes:
                 montant_sous_total += float(self.composantes[composante].prix)
         return montant_sous_total
 
 
-    def taxes(self):
-        montant_taxe= self.sous_total()* 0.15
+    def calcule_taxes(self):
+        montant_taxe= self.calcule_sous_total() * 0.15
         return montant_taxe
 
 
 
-    def total(self):
-        self.montant_total = self.sous_total() + self.taxes()
+    def calcul_total(self):
+        self.montant_total = self.calcule_sous_total() + self.calcule_taxes()
         return self.montant_total
 
 
@@ -450,7 +450,7 @@ choix_composantes = {
     ]
 }
 
-# tests unitaires pour la classe Ordinateur
+
 def test_ordinateur():
     dic_test_ordinateur = {}
     for cle in choix_composantes:
@@ -458,7 +458,7 @@ def test_ordinateur():
     panier_test =  Ordinateur(dic_test_ordinateur)
     codepostal="j9l 3G7"
     livraison = panier_test.calculer_livraison(codepostal)
-    assert ("{:.2f}".format(panier_test.total()+(livraison)))== str (2440.87)
+    assert ("{:.2f}".format(panier_test.calcul_total() + (livraison))) == str (2440.87)
 
     dic_test_ordinateur = {}
     for cle in choix_composantes:
@@ -466,7 +466,7 @@ def test_ordinateur():
     panier_test = Ordinateur(dic_test_ordinateur)
     codepostal = "j9l 3G7"
     livraison = panier_test.calculer_livraison(codepostal)
-    assert ("{:.2f}".format(panier_test.total()+(livraison))) == str (1357.23)
+    assert ("{:.2f}".format(panier_test.calcul_total() + (livraison))) == str (1357.23)
 
     assert (panier_test.calculer_livraison("j7c 3g7")) == 12.99
     assert (panier_test.calculer_livraison(codepostal="a7c 3g7")) == 20.99
@@ -474,4 +474,6 @@ def test_ordinateur():
     assert (panier_test.calculer_livraison(codepostal="-23")) == True
     assert (panier_test.calculer_livraison(codepostal="")) == 0
 
+
+#tests unitaires de la classe Ordinateur
 test_ordinateur()

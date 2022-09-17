@@ -9,17 +9,11 @@ annee=maintenent.year
 
 app = Flask(__name__)
 
-#tests unitaires de la classe Ordinateur
-test_ordinateur()
 
 
 
 @app.route("/")
 def index():
-    """
-    Chemin page index
-    :return: index.html
-    """
 
     if  Article.numero < 3:
         nombre_articles = len(articles)
@@ -35,7 +29,7 @@ def index():
 @app.route("/construire/")
 def construire():
     """
-    Chemin pour aller à la page construire un ordinateur
+    Chemin pour page construire un ordinateur
     :return:construire.html
     """
 
@@ -49,7 +43,7 @@ def construire():
 @app.route("/afficher-ordinateur", methods=["POST"])
 def afficher_ordinateur():
     """
-    Chemin pour accéder à la page résultat de la construction d'un ordinateur
+    Chemin pour page résultat de la construction d'un ordinateur
     :return: afficher-ordinateur.html
     """
     dic_choix_form_construire_ordinateur = {}
@@ -57,7 +51,7 @@ def afficher_ordinateur():
     erreur = True
 
 
-    #Récupérer les choix de l'utilisateur et les mettrent dans un dictionnaire,
+    # Récupérer les choix de l'utilisateur et les mettrent dans un dictionnaire,
     # s'il y'a une erreur le message panier vide est affiché
     for i,cle in enumerate(choix_composantes):
         try :
@@ -71,12 +65,12 @@ def afficher_ordinateur():
 
 
 
-    #Panier_du_client est un objet de classe Ordinateur qui va englober les choix du client
+    # Panier_du_client est un objet de classe Ordinateur qui va englober les choix du client
     panier_du_client=Ordinateur(dic_choix_form_construire_ordinateur)
 
 
 
-    #récupèrer le code postal à partir de la forme puis calculer la livraison
+    # Récupère le code postal à partir de la forme puis calculer la livraison
     codepostal = request.form['codepostal']
     livraison = panier_du_client.calculer_livraison(codepostal)
 
@@ -91,9 +85,9 @@ def afficher_ordinateur():
     if len(dic_choix_form_construire_ordinateur) != 10:
         erreur=True
 
-    sous_total = "{:.2f}".format(panier_du_client.sous_total())
-    taxes = "{:.2f}".format(panier_du_client.taxes())
-    total = "{:.2f}".format(panier_du_client.total()+(livraison))
+    sous_total = "{:.2f}".format(panier_du_client.calcule_sous_total())
+    taxes = "{:.2f}".format(panier_du_client.calcule_taxes())
+    total = "{:.2f}".format(panier_du_client.calcul_total() + (livraison))
 
     return render_template("afficher-ordinateur.html",var_form_construire=dic_choix_form_construire_ordinateur,annee=annee,
                        sous_total=sous_total,taxes=taxes,total=total,livraison=livraison,err=erreur)
@@ -106,7 +100,7 @@ if Article.numero <= 0:articles = [Article("Aucun article pour le moment","","",
 def blog(nb):
     """
     Chemin page /blog/
-    :param nb: numero de la pagination
+    :param nb: numéro de la pagination
     :return: blog.html
     """
     p=Paginator(articles,3)
